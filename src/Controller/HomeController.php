@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\HomeManager;
+use App\Model\PostManager;
 
 class HomeController extends AbstractController
 {
