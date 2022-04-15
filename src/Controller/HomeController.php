@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\PostManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -9,6 +11,6 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Home/index.html.twig', ['data' => '']);
     }
 }
