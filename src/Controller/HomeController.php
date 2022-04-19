@@ -11,6 +11,11 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig', ['data' => '']);
+        $postManager = new PostManager();
+
+        $posts = $postManager->selectAll('last_update_datetime', 'DESC');
+
+
+        return $this->twig->render('Home/index.html.twig', ['data' => $posts]);
     }
 }
