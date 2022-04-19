@@ -8,8 +8,8 @@ class LikeCommentsManager extends AbstractManager
 
     public function countCommentLikes(int $commentsId): int
     {
-        $query = "SELECT COUNT(*) as nLikes FROM " . self::TABLE . " WHERE comment_id = " . $commentsId;
+        $query = "SELECT COUNT(*) FROM " . self::TABLE . " WHERE comment_id = " . $commentsId;
 
-        return $this->pdo->query($query)->fetch()['nLikes'];
+        return $this->pdo->query($query)->fetchColumn();
     }
 }

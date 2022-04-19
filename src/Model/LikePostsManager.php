@@ -8,8 +8,8 @@ class LikePostsManager extends AbstractManager
 
     public function countPostLikes(int $postId): array
     {
-        $query = "SELECT COUNT(*) as nLikes FROM " . self::TABLE . " WHERE post_id= " . $postId;
+        $query = "SELECT COUNT(*) FROM " . self::TABLE . " WHERE post_id= " . $postId;
 
-        return $this->pdo->query($query)->fetch()['nLikes'];
+        return $this->pdo->query($query)->fetchColumn();
     }
 }

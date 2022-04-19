@@ -8,8 +8,8 @@ class CommentsManager extends AbstractManager
 
     public function countPostComments(int $postId): int
     {
-        $query = 'SELECT COUNT(*) as nComments FROM ' . self::TABLE . ' WHERE post_id = ' . $postId;
+        $query = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE post_id = ' . $postId;
 
-        return $this->pdo->query($query)->fetch()['nComments'];
+        return $this->pdo->query($query)->fetchColumn();
     }
 }
