@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\CommentsManager;
-use App\Model\DocumentsManager;
-use App\Model\LikePostManager;
+use App\Model\PostManager;
+
 
 class HomeController extends AbstractController
 {
@@ -12,8 +11,8 @@ class HomeController extends AbstractController
      * Display home page
      */
     public function index(): string
-    {        return $this->twig->render('Home/index.html.twig', [
-            'data' => 'HomeController->index()'
-            ]);
+    {
+        return $this->twig->render('Home/index.html.twig', ['data' => '']);
+
     }
 }
