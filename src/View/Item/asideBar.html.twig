@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+value="{{ item.title }}"
+
+{% block asideBar %}
+<div class="asideLeftBar">
+    <div class="text-body">
+        <img class="profilePictureUser" alt="profile picture user on aside bar" src="{% block image_user %}https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png{% endblock %}">
+        <h3>{% block firstaname %} {% endblock %} {% block lastname %} {% endblock %}</h3>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Feed</a>
+            </li>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Groupes
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="../Home/index.html.twig">Groupe 1</a></li>
+                    <li><a class="dropdown-item" href="../Home/index.html.twig">Groupe 2</a></li>
+                    <li><a class="dropdown-item" href="../Home/index.html.twig">Groupe 3</a></li>
+                </ul>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">E-learning</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
