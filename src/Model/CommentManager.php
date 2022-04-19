@@ -6,10 +6,9 @@ class CommentManager extends AbstractManager
 {
     public const TABLE = 'comments';
 
-    public function countPostLikes(int $id): int
+    public function countPostComment(int $commentsId): array
     {
-        $query = "SELECT COUNT(*) FROM" . self::TABLE . " WHERE id_post = $id";
+        $query = "SELECT COUNT(*) FROM" . self::TABLE . " WHERE id_post = $commentsId";
         return $this->pdo->query($query)->fetchAll();
     }
-
 }

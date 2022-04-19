@@ -12,7 +12,7 @@ class HomeController extends AbstractController
     public function index(): string
     {
         $likePostManager = new LikePostManager();
-        $n = $likePostManager->count();
-        return $this->twig->render('Home/index.html.twig', ['data' => $n]);
+        $n = $likePostManager->countPostLikes(1);
+        return $this->twig->render('Home/index.html.twig', ['postLike' => $n]);
     }
 }

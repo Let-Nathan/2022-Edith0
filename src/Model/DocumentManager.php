@@ -6,9 +6,9 @@ class DocumentManager extends AbstractManager
 {
     public const TABLE = 'documents';
 
-    public function selectByPostId($id): array
+    public function selectByPostId($documentsId): array
     {
-        $query = 'SELECT * FROM' . self::TABLE . 'WHERE post_id = ' . $id;
+        $query = 'SELECT * FROM' . self::TABLE . 'WHERE post_id = ' . $documentsId;
         return $this->pdo->query($query)->fetchAll();
     }
 }
