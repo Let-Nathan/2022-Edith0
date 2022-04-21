@@ -34,7 +34,6 @@ class FeedController extends AbstractController
             $posts[$i]['user'] = $userManager->selectOneById($post['users_id']);
             $posts[$i]['nLikes'] = $likesPostManager->countPostLikes($post['id']);
             $posts[$i]['documents'] = $documentsManager->getByPostId($post['id']);
-            $posts[$i]['timeAgo'] = TimeAgoModel::getTimeAgo($post['last_update_datetime']);
 
             $posts[$i]['comments'] = $commentsManager->selectByPostId($post['id']);
 
@@ -43,7 +42,6 @@ class FeedController extends AbstractController
             foreach ($posts[$i]['comments'] as $j => $comment) {
                 $posts[$i]['comments'][$j]['user'] = $userManager->selectOneById($comment['users_id']);
                 $posts[$i]['comments'][$j]['nLikes'] = $likesCommentsManager->countCommentLikes($comment['id']);
-                $posts[$i]['comments'][$j]['timeAgo'] = TimeAgoModel::getTimeAgo($comment['created_at']);
             }
         }
 

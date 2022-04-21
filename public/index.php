@@ -7,6 +7,10 @@
  * Time: 14:01
  */
 
+session_start();
+$_SESSION['user_id'] = 1;
+// TODO: don't forget to delete the previous line, for testing only
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 if (getenv('ENV') === false) {

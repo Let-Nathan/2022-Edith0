@@ -24,7 +24,7 @@
         <img src="{{  post['media_url'] }}" class="card-img-top" alt="...">
     {% endif %}
 
-    <span class="text-muted ms-3">last update: {{ post['timeAgo'] }} ago</span>
+    <span class="time-ago text-muted ms-3">{{ post['last_update_datetime'] }}</span>
 
     <ul class="list-inline m-0 mt-3 ms-3">
         {% for document in post['documents'] %}
