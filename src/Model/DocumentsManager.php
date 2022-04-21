@@ -8,7 +8,7 @@ class DocumentsManager extends AbstractManager
 
     public function getByPostId($postId): array
     {
-        $query = 'SELECT * FROM ' . self::TABLE . ' WHERE post_id = ' . $postId;
+        $query = "SELECT * FROM " . self::TABLE . " WHERE post_id = " . $postId;
 
         return $this->pdo->query($query)->fetchAll();
     }
