@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class LikePostsManager extends AbstractManager
+class LikesPostsManager extends AbstractManager
 {
     public const TABLE = 'users_posts_likes';
 
