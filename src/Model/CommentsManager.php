@@ -15,7 +15,7 @@ class CommentsManager extends AbstractManager
 
     public function selectByPostId(int $postId): array
     {
-        $query = "SELECT * FROM " . self::TABLE . " WHERE post_id = " . $postId;
+        $query = "SELECT * FROM " . self::TABLE . " WHERE post_id = " . $postId . " ORDER BY created_at";
 
         return $this->pdo->query($query)->fetchAll();
     }
