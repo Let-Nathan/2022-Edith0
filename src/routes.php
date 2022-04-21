@@ -9,6 +9,7 @@
 
 return [
     '' => ['HomeController', 'index',],
+    'news' => ['NewsController', 'showNews'],
 ];
 
 

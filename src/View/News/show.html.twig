@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>News</h1>
+
+    {% for content in news %}
+        <div class="card m-3">
+            <div class="card-header">
+                <h2>{{content['news_title']}}</h2>
+            </div>
+            <img src="{{ content['news_media_url'] }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="date-and-comments">
+                <p>{{content['create_at']}}</p>
+                </div>
+                <p>{{content['news_body']}}</p>
+            </div>
+        </div>
+
+    {%endfor %}
+
+{%endblock %}
+
