@@ -4,16 +4,32 @@
     <h1>News</h1>
 
     {% for content in news %}
-        <div class="card m-3">
-            <div class="card-header">
-                <h2>{{content['news_title']}}</h2>
+
+        <div class="card border-0" style="width: 40rem;">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h2>{{content['title']}}</h2>
+                <div class="d-flex align-items-center">
+                    <img class="rounded" style="height: 55px; width: 55px; object-fit: cover" src="{{ news['user']['image_url'] }}">
+                    <div class="d-flex flex-column justify-content-between m-2">
+                        <h5 class="card-title">{{ news['user']['firstname'] ~ ' ' ~ news['user']['lastname'] }}</h5>
+                        <p class="m-0">{{ news['user']['position'] }}</p>
+                    </div>
+                </div>
+
+                <div >
+                    <span class="text-white bg-primary p-2 ps-3 pe-3 rounded me-2 position-relative">
+                    <ion-icon name="heart"></ion-icon>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ news['nLikes'] }}</span>
+                </span>
+                </div>
+
             </div>
-            <img src="{{ content['news_media_url'] }}" class="card-img-top" alt="...">
+            <img src="{{ content['media_url'] }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="date-and-comments">
                 <p>{{content['create_at']}}</p>
                 </div>
-                <p>{{content['news_body']}}</p>
+                <p>{{content['body']}}</p>
             </div>
         </div>
 
