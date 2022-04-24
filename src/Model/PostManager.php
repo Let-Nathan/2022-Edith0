@@ -18,9 +18,10 @@ class PostManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
-    public function insertPost(string $body, ?string $mediaUrl, $mediaType, int $userId, ?int $groupId): int
+    public function insertPost(string $body, ?string $mediaUrl, $mediaType, int $userId, ?int $groupId): ?string
     {
-        $query = "INSERT INTO ". self::TABLE ." (body, media_url, media_type, user_id, group_id) VALUES (:body, :media_url, :media_type, :user_id, :group_id)";
+        $query = "INSERT INTO " . self::TABLE . " (body, media_url, media_type, user_id, group_id)
+            VALUES (:body, :media_url, :media_type, :user_id, :group_id)";
 
         $sth = $this->pdo->prepare($query);
 

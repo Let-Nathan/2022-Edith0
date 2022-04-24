@@ -20,7 +20,9 @@ class DocumentController extends AbstractController
                 }
 
                 if (!in_array(pathinfo($documents['name'][$i], PATHINFO_EXTENSION), $authorizedExtensions)) {
-                    throw new FileExeption("Media content must be of type 'pdf', 'txt', 'doc', 'xls', 'csv', 'odt', 'ods', 'odp', 'ical'");
+                    throw new FileExeption(
+                        "Media content must be of type 'pdf', 'txt', 'doc', 'xls', 'csv', 'odt', 'ods', 'odp', 'ical'"
+                    );
                 }
             }
 
