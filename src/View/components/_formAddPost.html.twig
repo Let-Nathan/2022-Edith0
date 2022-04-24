@@ -1,17 +1,23 @@
 <div class="card border-0 m-3 p-3" style="width: 40rem;">
-<form method="post" action="" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label for="body" class="form-label" hidden>Create a post</label>
-        <textarea class="form-control" id="body" placeholder="create a post"></textarea>
-    </div>
-    <div class="mb-3" style="width: 15rem;">
-        <label for="file" class="form-label">Image</label>
-        <input type="file" class="form-control" id="file">
-    </div>
-    <div class="mb-3" style="width: 15rem;">
-        <label for="file" class="form-label">Docs</label>
-        <input type="file" class="form-control" id="file" multiple>
-    </div>
-    <button type="submit" class="btn btn-primary">Post</button>
-</form>
+    <form method="post" action="/addpost" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="body" class="form-label" hidden>Create a post</label>
+            <textarea class="form-control" name='body' id="body" placeholder="create a post">{{ postBody }}</textarea>
+        </div>
+        <div class="mb-3" style="width: 15rem;">
+            <label for="media" class="form-label">Image</label>
+            <input type="file" class="form-control" name="media" id="media">
+        </div>
+        <div class="mb-3" style="width: 15rem;">
+            <label for="file" class="form-label">Docs</label>
+            <input type="file" class="form-control" name="files[]" id="file" multiple>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Post</button>
+
+        <div>
+            {% for error in errors %}
+                <p class="text-danger">&ast;{{ error }}</p>
+            {% endfor %}
+        </div>
+    </form>
 </div>

@@ -15,30 +15,9 @@
 </head>
 
 <body>
-<div class="container-fluid">
 
-    <div class="row">
-        <div class="col bg-danger">
-            {% block header %}{% endblock %}
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col col-2 bg-primary">
-            {% block sidebarLeft %}{% endblock %}
-        </div>
-
-        <div class="col bg-secondary">
-            {% block content %}{% endblock %}
-        </div>
-
-        <div class="col col-3 bg-warning">
-            {% block sidebarRight %}{% endblock %}
-        </div>
-    </div>
-
-</div>
+    {% block layout %}
+    {% endblock %}
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

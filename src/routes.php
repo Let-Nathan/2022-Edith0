@@ -9,4 +9,6 @@
 
 return [
     'feed' => ['FeedController', 'showFeed'],
+    'addpost' => ['PostController', 'addPost'],
+    'logout' => ['UserController', 'logout'],
 ];

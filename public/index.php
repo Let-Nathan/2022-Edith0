@@ -8,8 +8,9 @@
  */
 
 session_start();
-$_SESSION['user_id'] = 1;
-// TODO: don't forget to delete the previous line, for testing only
+
+// TODO: for test only
+$_SESSION['user_id'] = 5;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
