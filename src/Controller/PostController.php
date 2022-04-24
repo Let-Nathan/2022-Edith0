@@ -11,7 +11,6 @@ class PostController extends AbstractController
     public function addPost()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $errors = [];
 
             // check body
@@ -36,7 +35,7 @@ class PostController extends AbstractController
                 $mediaDir = 'uploads/uid-' . $_SESSION['user_id'] . '/';
                 $mediaName = uniqid('', true) . '.' . pathinfo($_FILES['media']['name'], PATHINFO_EXTENSION);
                 $mediaUrl = FileService::saveUploadedFile($_FILES['media']['tmp_name'], $mediaDir, $mediaName);
-                $media_type = $_FILES['media']['type'];
+                $mediaType = $_FILES['media']['type'];
             }
 
             if (!$errors) {
@@ -48,7 +47,7 @@ class PostController extends AbstractController
                 $postId = $postManager->insertPost(
                     $_POST['body'],
                     $mediaUrl ?? null,
-                    $media_type ?? null,
+                    $mediaType ?? null,
                     $_SESSION['user_id'],
                     null
                 );
@@ -62,7 +61,6 @@ class PostController extends AbstractController
                 }
 
                 header('Location: /feed');
-                exit;
             } else {
                 $_SESSION['errors'] = $errors;
                 header('Location: /feed');
