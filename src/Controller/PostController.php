@@ -54,10 +54,10 @@ class PostController extends AbstractController
 
                 try {
                     $documentController = new DocumentController();
-                    $documentController->addDocuments($_FILES['files'], $postId);
+                    $documentController->addDocuments($_FILES['files'], intval($postId));
                 } catch (FileExeption $e) {
                     $_SESSION['errors'][] = $e->getMessage();
-                    $postManager->delete($postId);
+                    $postManager->delete(intval($postId));
                 }
 
                 header('Location: /feed');
