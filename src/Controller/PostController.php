@@ -24,12 +24,14 @@ class PostController extends AbstractController
             $fileUploader = new FileUploader();
 
             // upload media
-                $fileModel = new FileModel($_FILES['media']);
-                $mediaUrl = null;
-            try {
-                $mediaUrl = $fileUploader->uploadMedia($fileModel, $_SESSION['user_id']);
-            } catch (FileExeption $e) {
-                $errors[] = $e->getMessage();
+            $fileModel = new FileModel($_FILES['media']);
+            $mediaUrl = null;
+            if (file_exists($fileModel->getTmpName())) {
+                try {
+                    $mediaUrl = $fileUploader->uploadMedia($fileModel);
+                } catch (FileExeption $e) {
+                    $errors[] = $e->getMessage();
+                }
             }
 
             if (!$errors) {
@@ -41,22 +43,11 @@ class PostController extends AbstractController
                     $_POST['body'],
                     $mediaUrl,
                     $fileModel->getType(),
-                    $_SESSION['user_id'],
-                    null
+                    $_SESSION['user_id']
                 );
 
-                $documentManager = new DocumentManager();
-                foreach ($_FILES['files']['tmp_name'] as $i => $tmpName) {
-                    try {
-                        $fileModel = new FileModel($_FILES['files'], $i);
-                        if (file_exists($tmpName)) {
-                            $documentUrl = $fileUploader->uploadDocument($fileModel, $_SESSION['user_id']);
-                            $documentManager->insertDocument($documentUrl, intval($postId));
-                        }
-                    } catch (FileExeption $e) {
-                        $_SESSION['errors'][] = $e->getMessage();
-                        $postManager->delete(intval($postId));
-                    }
+                if (!$this->addDocuments(intval($postId))) {
+                    $postManager->delete(intval($postId));
                 }
 
                 header('Location: /feed');
@@ -65,5 +56,25 @@ class PostController extends AbstractController
                 header('Location: /feed');
             }
         }
+    }
+
+    private function addDocuments(int $postId): bool
+    {
+        $documentManager = new DocumentManager();
+        $fileUploader = new FileUploader();
+
+        foreach ($_FILES['files']['tmp_name'] as $i => $tmpName) {
+            if (file_exists($tmpName)) {
+                try {
+                    $fileModel = new FileModel($_FILES['files'], $i);
+                    $documentUrl = $fileUploader->uploadDocument($fileModel);
+                    $documentManager->insertDocument($documentUrl, intval($postId));
+                } catch (FileExeption $e) {
+                    $_SESSION['errors'][] = $e->getMessage();
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

@@ -28,27 +28,11 @@ class FileModel
     }
 
     /**
-     * @param mixed $name
-     */
-    public function setName(mixed $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
      * @return mixed
      */
     public function getType(): mixed
     {
         return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType(mixed $type): void
-    {
-        $this->type = $type;
     }
 
     /**
@@ -60,14 +44,6 @@ class FileModel
     }
 
     /**
-     * @param mixed $tmpName
-     */
-    public function setTmpName(mixed $tmpName): void
-    {
-        $this->tmpName = $tmpName;
-    }
-
-    /**
      * @return mixed
      */
     public function getError(): mixed
@@ -76,26 +52,10 @@ class FileModel
     }
 
     /**
-     * @param mixed $error
-     */
-    public function setError(mixed $error): void
-    {
-        $this->error = $error;
-    }
-
-    /**
      * @return mixed
      */
     public function getSize(): mixed
     {
         return $this->size;
-    }
-
-    /**
-     * @param mixed $size
-     */
-    public function setSize(mixed $size): void
-    {
-        $this->size = $size;
     }
 }
