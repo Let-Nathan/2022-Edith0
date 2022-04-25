@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\UsersManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -12,7 +13,7 @@ use Twig\Loader\FilesystemLoader;
 abstract class AbstractController
 {
     protected Environment $twig;
-
+    protected ?array $user;
 
     public function __construct()
     {
@@ -24,6 +25,7 @@ abstract class AbstractController
                 'debug' => (ENV === 'dev'),
             ]
         );
+
         $this->twig->addExtension(new DebugExtension());
     }
 }
