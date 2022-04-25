@@ -11,10 +11,8 @@ class NewsController extends AbstractController
     /**
      * Display news
      */
-
     public function showNews(): string
     {
-
         $newsManager = new NewsManager();
         $userManager = new UsersManager();
         $likesNewsManager = new LikesNewsManager();
