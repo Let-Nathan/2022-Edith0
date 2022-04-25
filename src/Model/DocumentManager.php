@@ -17,4 +17,11 @@ class DocumentManager extends AbstractManager
             'post_id' => $postId,
         ]);
     }
+
+    public function getByPostId($postId): array
+    {
+        $query = "SELECT * FROM " . self::TABLE . " WHERE post_id = " . $postId;
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

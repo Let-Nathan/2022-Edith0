@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Model\DocumentManager;
 use App\Model\PostManager;
 use App\Services\FileExeption;
-use App\Services\FileService;
+use App\Upload\FileModel;
+use App\Upload\FileUploader;
 
 class PostController extends AbstractController
 {
@@ -19,23 +21,15 @@ class PostController extends AbstractController
                 $errors[] = 'Your post must be of at least 10 characters';
             }
 
-            // check media
-            if (file_exists($_FILES['media']['tmp_name'])) {
-                $authorizedExtensions = ['jpg','png', 'gif', 'webp', 'mp4'];
-                $maxFileSize = 60000000;
+            $fileUploader = new FileUploader();
 
-                if (filesize($_FILES['media']['tmp_name']) > $maxFileSize) {
-                    $errors[] = 'The max upload size for a media content is 60MB';
-                }
-
-                if (!in_array(pathinfo($_FILES['media']['name'], PATHINFO_EXTENSION), $authorizedExtensions)) {
-                    $errors[] = "Media content must be of type 'jpg', 'png', mp4";
-                }
-
-                $mediaDir = 'uploads/uid-' . $_SESSION['user_id'] . '/';
-                $mediaName = uniqid('', true) . '.' . pathinfo($_FILES['media']['name'], PATHINFO_EXTENSION);
-                $mediaUrl = FileService::saveUploadedFile($_FILES['media']['tmp_name'], $mediaDir, $mediaName);
-                $mediaType = $_FILES['media']['type'];
+            // upload media
+                $fileModel = new FileModel($_FILES['media']);
+                $mediaUrl = null;
+            try {
+                $mediaUrl = $fileUploader->uploadMedia($fileModel, $_SESSION['user_id']);
+            } catch (FileExeption $e) {
+                $errors[] = $e->getMessage();
             }
 
             if (!$errors) {
@@ -43,21 +37,26 @@ class PostController extends AbstractController
                 unset($_SESSION['postBody']);
 
                 $postManager = new PostManager();
-
                 $postId = $postManager->insertPost(
                     $_POST['body'],
-                    $mediaUrl ?? null,
-                    $mediaType ?? null,
+                    $mediaUrl,
+                    $fileModel->getType(),
                     $_SESSION['user_id'],
                     null
                 );
 
-                try {
-                    $documentController = new DocumentController();
-                    $documentController->addDocuments($_FILES['files'], intval($postId));
-                } catch (FileExeption $e) {
-                    $_SESSION['errors'][] = $e->getMessage();
-                    $postManager->delete(intval($postId));
+                $documentManager = new DocumentManager();
+                foreach ($_FILES['files']['tmp_name'] as $i => $tmpName) {
+                    try {
+                        $fileModel = new FileModel($_FILES['files'], $i);
+                        if (file_exists($tmpName)) {
+                            $documentUrl = $fileUploader->uploadDocument($fileModel, $_SESSION['user_id']);
+                            $documentManager->insertDocument($documentUrl, intval($postId));
+                        }
+                    } catch (FileExeption $e) {
+                        $_SESSION['errors'][] = $e->getMessage();
+                        $postManager->delete(intval($postId));
+                    }
                 }
 
                 header('Location: /feed');

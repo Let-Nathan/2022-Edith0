@@ -3,12 +3,11 @@
 namespace App\Controller;
 
 use App\Model\CommentsManager;
-use App\Model\DocumentsManager;
+use App\Model\DocumentManager;
 use App\Model\LikeCommentsManager;
 use App\Model\LikesPostsManager;
 use App\Model\PostManager;
 use App\Model\UsersManager;
-use App\Services\TimeAgoModel;
 
 class FeedController extends AbstractController
 {
@@ -22,7 +21,7 @@ class FeedController extends AbstractController
         $commentsManager = new CommentsManager();
         $likesPostManager = new LikesPostsManager();
         $likesCommentsManager = new LikeCommentsManager();
-        $documentsManager = new DocumentsManager();
+        $documentManager = new DocumentManager();
 
         // select all posts
         $posts = $postManager->selectAllFeedPost('last_update_datetime', 'DESC');
@@ -33,7 +32,7 @@ class FeedController extends AbstractController
         foreach ($posts as $i => $post) {
             $posts[$i]['user'] = $userManager->selectOneById($post['user_id']);
             $posts[$i]['nLikes'] = $likesPostManager->countPostLikes($post['id']);
-            $posts[$i]['documents'] = $documentsManager->getByPostId($post['id']);
+            $posts[$i]['documents'] = $documentManager->getByPostId($post['id']);
 
             $posts[$i]['comments'] = $commentsManager->selectByPostId($post['id']);
 
