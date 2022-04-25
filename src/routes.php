@@ -9,6 +9,6 @@
 
 return [
     '' => ['HomeController', 'index',],
-    'news' => ['NewsController', 'showNews',],
+    'news' => ['NewsController', 'showNews'],
     'feed' => ['FeedController', 'showFeed',],
 ];
