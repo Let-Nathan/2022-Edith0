@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Model\AbstractManager;
 
-class PostManager extends AbstractManager
+class NewsManager extends AbstractManager
 {
     public const TABLE = 'news';
 }
