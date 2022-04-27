@@ -1,5 +1,19 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout-3cols.html.twig' %}
+
+{% block sidebarLeft %}
+{% endblock %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+<div class="d-flex flex-column align-items-center">
+    {% include 'components/_formAddPost.html.twig' %}
+
+    {% for post in posts %}
+
+        <div class="d-flex flex-column mb-3">
+            {% include 'components/_post.html.twig' %}
+        </div>
+
+    {% endfor %}
+</div>
+
 {% endblock %}
