@@ -1,0 +1,11 @@
+<h5>tricks and tips</h5>
+
+{% for content in tricks %}
+<div class="card" style="width: 18rem;">
+    <h5 class="card-title">{{ content['title']}}</h5>
+    <img src="{{ content['media_url'] }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p>{{ content['body']}}</p>
+    </div>
+</div>
+{%endfor %}

@@ -8,6 +8,8 @@ use App\Model\LikeCommentsManager;
 use App\Model\LikesPostsManager;
 use App\Model\PostManager;
 use App\Model\UsersManager;
+use App\Model\TricksManager;
+
 
 class FeedController extends AbstractController
 {
@@ -44,7 +46,14 @@ class FeedController extends AbstractController
             }
         }
 
-        $twigParams = ['posts' => $posts,];
+        // Sidebar - Tricks
+        $tricksManager = new TricksManager();
+
+        //Select all tricks
+        $tricks = $tricksManager->selectAll();
+
+        //Posts
+        $twigParams = ['posts' => $posts, 'tricks' => $tricks];
 
         if (isset($_SESSION['errors'])) {
             $twigParams['errors'] = $_SESSION['errors'];
