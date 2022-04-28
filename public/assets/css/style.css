@@ -9,4 +9,12 @@
 .btn-change:hover{
     -webkit-transform: scale(1.05);
     background: #31708f;
+
+.userProfilePicture{
+    width: 10rem;
+}
+
+.asideLeftBar{
+    color : black;
+    text-decoration: none;
 }
