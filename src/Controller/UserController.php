@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-
-
-
 use App\Model\UserManager;
 
 class UserController extends AbstractController
@@ -12,9 +9,8 @@ class UserController extends AbstractController
     public function login()
     {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(isset($_POST['email']) && isset($_POST['password'])) {
-
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['email']) && isset($_POST['password'])) {
                 $email = trim($_POST['email']);
                 $userManager = new UserManager();
 
@@ -25,13 +21,8 @@ class UserController extends AbstractController
 
                     header('Location: /feed');
                 }
-
-
             }
         }
-
-
-
             return $this->twig->render('User/login.html.twig');
     }
 
@@ -39,6 +30,5 @@ class UserController extends AbstractController
     {
         session_destroy();
         header("Location: /login");
-
     }
 }
