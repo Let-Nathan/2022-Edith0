@@ -22,8 +22,6 @@ class UserController extends AbstractController
         } else {
             $userManager->insertLikePost($_SESSION['user_id'], $postId);
         }
-
-        header('Location: /feed#' . $postId);
     }
 
     public function toggleLikeComment($commentId): void
@@ -35,7 +33,5 @@ class UserController extends AbstractController
         } else {
             $userManager->insertLikeComment($_SESSION['user_id'], $commentId);
         }
-
-        header('Location: /feed#' . $commentId);
     }
 }
