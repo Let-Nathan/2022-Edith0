@@ -5,24 +5,31 @@
     <div class="container-fluid">
 
         <div class="row">
+
             <div class="col p-0">
                 {% include 'components/_header.html.twig' %}
+
+                <div class="col bg-danger">
+                    {% block header %}{% endblock %}
+
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col col-2">
+                    {% block asidebarLeft %}{% endblock %}
+                </div>
+
+                <div class="col bg-light">
+                    {% block content %}{% endblock %}
+                </div>
+
+                <div class="col col-3">
+                    {% block sidebarRight %}{% endblock %}
+                    {% include 'components/_tricks.html.twig' %}
+                </div>
+            </div>
+
         </div>
-
-        <div class="row">
-            <div class="col col-2">
-                {% block sidebarLeft %}{% endblock %}
-            </div>
-
-            <div class="col bg-light">
-                {% block content %}{% endblock %}
-            </div>
-
-            <div class="col col-3">
-                {% block sidebarRight %}{% endblock %}
-            </div>
-        </div>
-
     </div>
 {% endblock %}
