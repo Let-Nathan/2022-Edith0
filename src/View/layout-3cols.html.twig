@@ -5,9 +5,8 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col bg-danger">
-                {% block header %}{% endblock %}
-
+            <div class="col p-0">
+                {% include 'components/_header.html.twig' %}
             </div>
         </div>
 
@@ -16,7 +15,7 @@
                 {% block sidebarLeft %}{% endblock %}
             </div>
 
-            <div class="col" style="background-color: #eee">
+            <div class="col bg-light">
                 {% block content %}{% endblock %}
             </div>
 
