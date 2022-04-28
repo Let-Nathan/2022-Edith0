@@ -1,9 +1,11 @@
 <div class="asideLeftBar">
     <div class="text-body">
         <div class="w-25 p-3">
-        <img class="userProfilePicture" alt="user profile picture" src="{% block image_user %}https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png{% endblock %}">
+        <img class="userProfilePicture rounded" alt="user profile picture" src="{{ user_logged['image_url']}}">
         </div>
-        <h3>John Doe</h3>
+        <h3>{{ user_logged['firstname'] ~ ' ' ~ user_logged['lastname'] }}</h3>
+            <h6>{{ user_logged['position']}} - department</h6>
+        
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Feed</a>
