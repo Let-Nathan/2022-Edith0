@@ -14,5 +14,5 @@ return [
     'addpost' => ['PostController', 'addPost'],
     'logout' => ['UserController', 'logout'],
     'learning' => ['Learning\ContentController', 'list'],
-    'learning/training' => ['Learning\TrainingController', 'show', ['id']]
+    'learning/training' => ['Learning\LearningController', 'show', ['id']]
 ];
