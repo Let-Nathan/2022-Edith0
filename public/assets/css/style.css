@@ -1,5 +1,6 @@
 :root {
-    --bs-primary-rgb: 255, 168, 168;
+    /*--bs-primary-rgb: 255, 82, 82;*/
+    --bs-primary-rgb: 255, 107, 107;
     --bs-primary: rgb(var(--bs-primary-rgb));
 }
 
@@ -16,6 +17,10 @@
 
 .icon-m {
     font-size: 27px;
+}
+
+.icon-b {
+    font-size: 35px;
 }
 
 
@@ -40,4 +45,10 @@ background-color: var(--bs-gray-200);
 .asideLeftBar{
     color : black;
     text-decoration: none;
+}
+
+/* FOOTER */
+
+.copyrightFooter{
+    margin-top: 9rem;
 }
