@@ -1,0 +1,12 @@
+.btn-change{
+    background: lightseagreen;
+    float: left;
+    box-shadow: 0 0 1px #ccc;
+    border: 0px;
+    color: #fff;
+}
+
+.btn-change:hover{
+    -webkit-transform: scale(1.05);
+    background: #31708f;
+}
