@@ -7,7 +7,7 @@ use App\Model\DocumentManager;
 use App\Model\LikeCommentsManager;
 use App\Model\LikesPostsManager;
 use App\Model\PostManager;
-use App\Model\UsersManager;
+use App\Model\UserManager;
 use App\Model\TricksManager;
 
 class FeedController extends AbstractController
