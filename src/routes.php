@@ -11,6 +11,11 @@ return [
     '' => ['HomeController', 'index',],
     'news' => ['NewsController', 'showNews'],
     'feed' => ['FeedController', 'showFeed'],
-    'addpost' => ['PostController', 'addPost'],
+    'post/add' => ['PostController', 'addPost'],
+    'post/delete' => ['PostController', 'deletePost', ['id']],
+    'post/like' => ['UserController', 'toggleLikePost', ['postid']],
+    'comment/add' => ['CommentController', 'addComment'],
+    'comment/like' => ['UserController', 'toggleLikeComment', ['commentid']],
+    'comment/delete' => ['CommentController', 'deleteComment', ['id']],
     'logout' => ['UserController', 'logout'],
 ];

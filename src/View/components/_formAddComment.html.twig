@@ -1,7 +1,10 @@
-<form method="post" action="" enctype="multipart/form-data" class="m-3">
+<form method="post" action="/comment/add" enctype="multipart/form-data" class="m-3">
     <div class="mb-3">
         <label for="body" class="form-label" hidden>Leave a comment</label>
-        <textarea class="form-control" id="body" placeholder="leave a comment"></textarea>
+        <textarea class="ed-textarea form-control" id="body" name='body' placeholder="leave a comment"></textarea>
+        {# TODO: replace 5 with logged user #}
+        <input value="5" type="number" name="userId" hidden>
+        <input value="{{ post['id'] }}" type="number" name="postId" hidden>
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>
