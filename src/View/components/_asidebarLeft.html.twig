@@ -1,17 +1,22 @@
-<div class="asideLeftBar">
+<div class="asideLeftBar m-3">
     <div class="text-body">
         <div class="w-25 p-3">
-        <img class="userProfilePicture rounded" alt="user profile picture" src="{{ user_logged['image_url']}}">
+        <img class="userProfilePicture rounded" alt="{{ user_logged['firstname'] ~ ' ' ~ user_logged['lastname'] }} profile picture" src="{{ user_logged['image_url']}}">
         </div>
         <h3>{{ user_logged['firstname'] ~ ' ' ~ user_logged['lastname'] }}</h3>
+        <div class="m-1 mb-5">
             <h6>{{ user_logged['position']}} - department</h6>
+        </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Feed</a>
+                <a class="nav-link active d-flex align-items-center gap-3" aria-current="page" href="#"> <ion-icon class="icon-b" name="home"></ion-icon><span>Feed</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active d-flex align-items-center gap-3" aria-current="page" href="#"> <ion-icon class="icon-b" name="mail"></ion-icon>Messages</a>
             </li>
             <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Groupes
+                <button class="btn dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ion-icon class="icon-b" name="people"></ion-icon>Groupes
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="#">Groupe 1</a></li>
@@ -20,10 +25,13 @@
                 </ul>
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="#">News</a>
+                <a class="nav-link d-flex align-items-center gap-3" href="#"> <ion-icon class="icon-b" name="newspaper"></ion-icon>News</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled">E-learning</a>
+                <a class="nav-link d-flex align-items-center gap-3" href="#"><ion-icon class="icon-b" name="school"></ion-icon>E-learning</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-3" href="#"><ion-icon class="icon-b" name="bookmarks"></ion-icon>Favorites</a>
             </li>
         </ul>
     </div>

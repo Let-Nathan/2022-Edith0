@@ -8,6 +8,10 @@
     font-size: 27px;
 }
 
+.icon-b {
+    font-size: 35px;
+}
+
 
 /* FORMS */
 
@@ -30,4 +34,10 @@ background-color: var(--bs-gray-200);
 .asideLeftBar{
     color : black;
     text-decoration: none;
+}
+
+/* FOOTER */
+
+.copyrightFooter{
+    margin-top: 9rem;
 }

@@ -5,22 +5,22 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col bg-danger">
-                {% block header %}{% endblock %}
+            <div class="col p-0">
             </div>
         </div>
 
         <div class="row">
-            <div class="col col-2">
+            <div class="col col-2 p-0">
                 {% block asidebarLeft %}{% endblock %}
+                {% include 'components/_footer.html.twig'%}
             </div>
 
-            <div class="col" style="background-color: #eee">
+            <div class="col bg-light">
                 {% block content %}{% endblock %}
             </div>
 
             <div class="col col-3">
-                {% block asidebarRight %}{% endblock %}
+                {% block sidebarRight %}{% endblock %}
             </div>
         </div>
 
