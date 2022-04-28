@@ -3,12 +3,14 @@
 namespace App\Controller\Learning;
 
 use App\Controller\AbstractController;
-use App\Model\LEarning\PageManager;
+use App\Model\Learning\PageManager;
 
 class LearningController extends AbstractController
 {
     public function show(): string
     {
+        $eLearning = null;
+
         if (isset($_GET['id'])) {
             $pageManager = new PageManager();
             $id = intval($_GET['id']);
