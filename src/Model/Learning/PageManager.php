@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Learning;
 
-class LearningDisplayManager extends AbstractManager
+use App\Model\AbstractManager;
+
+class PageManager extends AbstractManager
 {
     public const TABLE = 'elearning_display';
-    public function selectById($id): array
+    public function selectById($id): ?array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE content_id=:id");
         $statement->bindValue('id', $id);
         $statement->execute();
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 }

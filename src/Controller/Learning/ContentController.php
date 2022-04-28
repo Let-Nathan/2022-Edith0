@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Learning;
 
-use App\Model\LearningManager;
-use App\Model\LearningContentsManager;
+use App\Controller\AbstractController;
+use App\Model\Learning\ContentsManager;
+use App\Model\Learning\LearningManager;
 
-class LearningController extends AbstractController
+class ContentController extends AbstractController
 {
     public function list(): string
     {
         $learningManager = new LearningManager();
-        $contentsManager = new LearningContentsManager();
+        $contentsManager = new ContentsManager();
         // Display Learning
         $learning = $learningManager->selectAll('id', 'ASC');
         // Show content of each Learning catégories

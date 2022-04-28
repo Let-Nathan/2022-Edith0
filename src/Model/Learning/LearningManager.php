@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Learning;
+
+use App\Model\AbstractManager;
 
 class LearningManager extends AbstractManager
 {

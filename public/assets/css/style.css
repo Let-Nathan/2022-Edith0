@@ -6,11 +6,12 @@
     color: #fff;
 }
 
-.btn-change:hover{
+.btn-change:hover {
     -webkit-transform: scale(1.05);
     background: #31708f;
+}
 
-.userProfilePicture{
+.userProfilePicture {
     width: 10rem;
 }
 
