@@ -34,6 +34,15 @@ class PostController extends AbstractController
                 }
             }
 
+            // check url
+            $postLink = null;
+            if (isset($_POST['url']) && !empty($_POST['url'])) {
+                if (!filter_var($_POST['url'], FILTER_VALIDATE_URL)) {
+                    $errors[] = 'Invalid link url';
+                }
+                $postLink = trim($_POST['url']);
+            }
+
             if (!$errors) {
                 unset($_SESSION['errors']);
                 unset($_SESSION['postBody']);
@@ -42,7 +51,7 @@ class PostController extends AbstractController
                 $postId = $postManager->insertPost(
                     $_POST['body'],
                     $mediaUrl,
-                    $fileModel->getType(),
+                    $postLink,
                     $_SESSION['user_id']
                 );
 
@@ -76,5 +85,14 @@ class PostController extends AbstractController
             }
         }
         return true;
+    }
+
+    public function deletePost(int $id)
+    {
+        // TODO: delete all related documents and image from filesystem
+        $postManager = new PostManager();
+        $postManager->delete($id);
+
+        header('Location: /feed');
     }
 }
