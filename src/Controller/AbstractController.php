@@ -26,6 +26,7 @@ abstract class AbstractController
             ]
         );
 
+
         $userManager = new UsersManager();
 
         $this->user = isset($_SESSION['user_id']) ? $userManager->selectOneById($_SESSION['user_id']) : null;
