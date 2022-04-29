@@ -38,10 +38,20 @@ background-color: var(--bs-gray-200);
     cursor: pointer;
 }
 
-.userProfilePicture{
+.btn-change{
+    background: lightseagreen;
+    float: left;
+    box-shadow: 0 0 1px #ccc;
+    border: 0px;
+    color: #fff;
+}
+.btn-change:hover {
+    -webkit-transform: scale(1.05);
+    background: #31708f;
+}
+.userProfilePicture {
     width: 10rem;
 }
-
 .asideLeftBar{
     color : black;
     text-decoration: none;
@@ -59,7 +69,6 @@ background-color: var(--bs-gray-200);
     height: 37rem;
     object-fit: cover;
     opacity: 80%;
-
 }
 
 .news-img-card{
