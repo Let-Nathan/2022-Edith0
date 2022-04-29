@@ -1,0 +1,45 @@
+{% extends 'layout-1col.html.twig' %}
+
+{% block content %}
+
+    <div class="container-fluid bg-light p-0">
+        <nav class="navbar navbar-light bg-primary shadow fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" href="#">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded bg-light d-flex" style="width: 50px; height: 50px; padding: 10px;">
+                            <img src="/assets/images/favicon.png" alt="" width="100%" class="d-inline-block align-text-top">
+                        </div>
+                        <h1>Editho</h1>
+                    </div>
+                </a>
+                <form method="post" action="" class="d-flex align-items-end gap-3 text-light">
+                    <div>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+
+                    <div>
+                        <input type="submit" class="form-control" name="submit" value="login">
+                    </div>
+                </form>
+            </div>
+        </nav>
+
+        <div style="width: 100vw; height: 100vh; overflow: hidden">
+            <img src="/assets/images/loginbg.jpg" style="width: 100%">
+        </div>
+        <div class="d-flex align-items-center gap-5" style="position: absolute; top:50%; left: 20%; transform: translateY(-50%); opacity: 0.8;">
+            <img src="/assets/images/logo-m.png">
+            <div class="d-flex flex-column align-items-center gap-3 text-light bg-dark p-5 rounded">
+            <h1>The social media for companies</h1>
+                <p>Keep in touch with your company, share, post, learn and more</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

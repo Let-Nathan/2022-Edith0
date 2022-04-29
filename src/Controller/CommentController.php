@@ -28,7 +28,6 @@ class CommentController extends AbstractController
             $commentManager->delete($id);
         }
 
-
         header('Location: /feed');
     }
 }

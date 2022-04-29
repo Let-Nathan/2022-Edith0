@@ -8,7 +8,7 @@ $routes = require_once __DIR__ . '/../src/routes.php';
 
 // If required route is not is $routes, return a 404 Page not found error
 if (!key_exists($route, $routes)) {
-    header("Location: /404");
+    header("404 - Page not found");
     echo '404 - Page not found';
     exit();
 }
