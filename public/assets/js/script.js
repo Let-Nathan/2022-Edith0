@@ -5,6 +5,13 @@ timeAgoEls.forEach(el => {
     el.innerHTML = moment(el.innerHTML, "YYYY-MM-DD h:mm:ss").fromNow();
 });
 
+const linkInputContainerEl = document.querySelector('.ed-form-control--url');
+const linkInputEl = document.querySelector('#url');
+linkInputContainerEl.addEventListener('click' , ev => {
+    linkInputContainerEl.classList.add('col');
+    linkInputEl.hidden = false
+});
+
 const ctaLikePosts = document.querySelectorAll('.cta-like-post');
 
 ctaLikePosts.forEach(el => {

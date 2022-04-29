@@ -17,4 +17,5 @@ return [
     'comment/like' => ['UserController', 'toggleLikeComment', ['commentid']],
     'comment/delete' => ['CommentController', 'deleteComment', ['id']],
     'logout' => ['UserController', 'logout'],
+    '404' => ['GameController', 'init'],
 ];

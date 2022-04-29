@@ -16,9 +16,9 @@
             <span class="cta-like-post position-relative" data-postid="{{ post['id'] }}">
                 <span>
                 {% if user_logged['id'] in post['usersIdLiked'][0] %}
-                    <ion-icon class="icon-m" name="heart"></ion-icon>
+                    <ion-icon class="icon--link icon-m" name="heart"></ion-icon>
                 {% else %}
-                    <ion-icon class="icon-m" name="heart-outline"></ion-icon>
+                    <ion-icon class="icon--link icon-m" name="heart-outline"></ion-icon>
                 {% endif %}
                 </span>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ post['nLikes'] }}</span>
