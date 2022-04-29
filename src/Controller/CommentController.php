@@ -27,7 +27,7 @@ class CommentController extends AbstractController
         if ($comment['user_id'] === $_SESSION['user_id']) {
             $commentManager->delete($id);
         }
-        
+
         header('Location: /feed');
     }
 }
