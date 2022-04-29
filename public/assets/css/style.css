@@ -52,3 +52,18 @@ background-color: var(--bs-gray-200);
 .copyrightFooter{
     margin-top: 9rem;
 }
+
+/* NEWS */
+
+.newspaper{
+    height: 37rem;
+    object-fit: cover;
+    opacity: 80%;
+
+}
+
+.news-img-card{
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}

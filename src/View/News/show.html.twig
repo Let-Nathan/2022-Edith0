@@ -1,38 +1,27 @@
 {% extends 'layout-3cols.html.twig' %}
 
 {% block content %}
-    <h1>News</h1>
-
+    <div class="head">
+    <img class="newspaper rounded mt-2"  src="https://zupimages.net/up/22/17/wt6l.jpg">
+    </div>
     {% for content in news %}
-
-        <div class="card border-0" style="width: 40rem;">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h2>{{content['title']}}</h2>
-                <div class="d-flex align-items-center">
-                    <img class="rounded" style="height: 55px; width: 55px; object-fit: cover" src="{{ news['user']['image_url'] }}">
-                    <div class="d-flex flex-column justify-content-between m-2">
-                        <h5 class="card-title">{{ news['user']['firstname'] ~ ' ' ~ news['user']['lastname'] }}</h5>
-                        <p class="m-0">{{ news['user']['position'] }}</p>
-                    </div>
-                </div>
-
-                <div >
-                    <span class="text-white bg-primary p-2 ps-3 pe-3 rounded me-2 position-relative">
-                    <ion-icon name="heart"></ion-icon>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ news['nLikes'] }}</span>
-                </span>
-                </div>
-
-            </div>
-            <img src="{{ content['media_url'] }}" class="card-img-top" alt="...">
+        <div class="card m-3">
             <div class="card-body">
-                <div class="date-and-comments">
-                <p>{{content['create_at']}}</p>
+                <div class="headercard d-flex">
+                    <img src="{{ content['media_url'] }}" class="card-img-top news-img-card" alt="content image news">
+                        <div class="d-flex flex-wrap ms-2 mt-2">
+                        <h5 class="card-title align-self">{{content['title']}}</h5>
+                    <h6 class="card-subtitle text-muted">Author : {{content['user']['firstname'] ~ ' ' ~ content['user']['lastname'] ~ ' | ' ~ content['user']['position']}}</h6>
+                        </div>
                 </div>
-                <p>{{content['body']}}</p>
+                    <p class="card-text mt-3">{{content['body']}}</p>
+
+                <div class="d-flex ms-2">
+                    <p>{{content['create_at']}}</p>
+                    <a href="#" class="card-link ms-3">Lire plus</a>
+                </div>
             </div>
         </div>
-
     {%endfor %}
 
 {%endblock %}
