@@ -14,11 +14,11 @@
                     <h6 class="card-subtitle text-muted">Author : {{content['user']['firstname'] ~ ' ' ~ content['user']['lastname'] ~ ' | ' ~ content['user']['position']}}</h6>
                         </div>
                 </div>
-                    <p class="card-text mt-3">{{content['body']}}</p>
+                    <p class="card-text mt-3">{{content['body']|slice(0, 250)}}</p>
 
                 <div class="d-flex ms-2">
                     <p>{{content['create_at']}}</p>
-                    <a href="#" class="card-link ms-3">Lire plus</a>
+                    <a href="#" class="card-link ms-3">Read more</a>
                 </div>
             </div>
         </div>
