@@ -11,9 +11,8 @@ class UserManager extends AbstractManager
         $query = 'SELECT * FROM users WHERE email=:email';
 
         $sth = $this->pdo->prepare($query);
-        $sth->execute(['email'=> $email]);
+        $sth->execute(['email' => $email]);
 
         return $sth->fetch();
-
     }
 }

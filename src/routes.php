@@ -9,12 +9,9 @@
 
 return [
     '' => ['HomeController', 'index',],
-
     'login' => ['UserController', 'login'],
-
     'news' => ['NewsController', 'showNews'],
     'feed' => ['FeedController', 'showFeed'],
     'addpost' => ['PostController', 'addPost'],
-
     'logout' => ['UserController', 'logout'],
 ];
