@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Model\CommentManager;
 use App\Model\DocumentManager;
-use App\Model\LikeCommentsManager;
-use App\Model\LikesPostsManager;
 use App\Model\PostManager;
-use App\Model\UsersManager;
+use App\Model\UserManager;
 use App\Model\TricksManager;
 
 class FeedController extends AbstractController
@@ -18,7 +16,7 @@ class FeedController extends AbstractController
     public function showFeed(): string
     {
         $postManager = new PostManager();
-        $userManager = new UsersManager();
+        $userManager = new UserManager();
         $commentsManager = new CommentManager();
         $documentManager = new DocumentManager();
 
