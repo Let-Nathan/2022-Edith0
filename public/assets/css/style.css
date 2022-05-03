@@ -1,3 +1,29 @@
+
+/* ICONS */
+
+.icon-s {
+    font-size: 16px;
+}
+
+.icon-m {
+    font-size: 27px;
+}
+
+
+/* FORMS */
+
+.ed-form-control {
+    transition: all 0.5s;
+}
+
+.ed-form-control:hover {
+background-color: var(--bs-gray-200);
+}
+
+.ed-form-control label {
+    cursor: pointer;
+}
+
 .btn-change{
     background: lightseagreen;
     float: left;

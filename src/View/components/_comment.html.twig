@@ -1,5 +1,5 @@
-<div class="card border-0 collapse" id="{{ 'comments-' ~ post['id'] }}" style="width: 30rem;">
-    <div class="card-header d-flex justify-content-between align-items-center">
+<div class="card border-0 collapse" id="{{ 'comments-' ~ post['id'] }}" style="width: 40rem;">
+    <div class="card-header d-flex justify-content-between align-items-center border-0">
 
         <div class="d-flex align-items-center">
             <img class="rounded" style="height: 55px; width: 55px; object-fit: cover" src="{{ comment['user']['image_url'] }}">
@@ -9,11 +9,30 @@
             </div>
         </div>
 
-        <div>
-            <span class="text-white bg-primary p-2 ps-3 pe-3 rounded me-2 position-relative">
-                <ion-icon name="heart"></ion-icon>
+        <div class="d-flex gap-3">
+            <span class="position-relative">
+                <a href="/comment/like?commentid={{ comment['id'] }}">
+                {% if user_logged['id'] in comment['usersIdLiked'][0] %}
+                    <ion-icon class="icon-m" name="heart"></ion-icon>
+                {% else %}
+                    <ion-icon class="icon-m" name="heart-outline"></ion-icon>
+                {% endif %}
+                </a>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ comment['nLikes'] }}</span>
             </span>
+            <div class="dropdown">
+                <button class="btn p-0 border-0" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ion-icon class="icon-m" name="ellipsis-horizontal-circle-outline"></ion-icon>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li class="d-flex align-items-center">
+                        <button class="dropdown-item" type="button"><ion-icon class='icon-s me-2' name="create-outline"></ion-icon>Edit</button>
+                    </li>
+                    {% if comment['user_id'] == user_logged['id'] %}
+                        <li class="d-flex align-items-center"><a href="/comment/delete?id={{ comment['id'] }}"><button class="dropdown-item" type="button"><ion-icon class='icon-s me-2' name="trash-outline"></ion-icon>delete</button></a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
 
     </div>
