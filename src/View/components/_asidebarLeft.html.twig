@@ -1,0 +1,29 @@
+<div class="asideLeftBar">
+    <div class="text-body">
+        <div class="w-25 p-3">
+        <img class="userProfilePicture" alt="user profile picture" src="{% block image_user %}https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png{% endblock %}">
+        </div>
+        <h3>{% block firstaname %} {% endblock %} {% block lastname %} {% endblock %}</h3>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Feed</a>
+            </li>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Groupes
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Groupe 1</a></li>
+                    <li><a class="dropdown-item" href="#">Groupe 2</a></li>
+                    <li><a class="dropdown-item" href="#">Groupe 3</a></li>
+                </ul>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">E-learning</a>
+            </li>
+        </ul>
+    </div>
+</div>
