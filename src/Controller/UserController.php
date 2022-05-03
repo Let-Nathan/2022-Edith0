@@ -6,7 +6,7 @@ use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
-    public function login()
+    public function login(): ?string
     {
         $error = null;
 
@@ -21,6 +21,7 @@ class UserController extends AbstractController
                     $_SESSION['user_id'] = $user['id'];
 
                     header('Location: /feed');
+                    return null;
                 } else {
                     $error = 'The password is incorrect';
                 }
