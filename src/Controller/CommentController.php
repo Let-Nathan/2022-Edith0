@@ -22,7 +22,11 @@ class CommentController extends AbstractController
     public function deleteComment(int $id)
     {
         $commentManager = new CommentManager();
-        $commentManager->delete($id);
+        $comment = $commentManager->selectOneById($id);
+
+        if ($comment['user_id'] === $_SESSION['user_id']) {
+            $commentManager->delete($id);
+        }
 
         header('Location: /feed');
     }
