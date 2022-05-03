@@ -91,7 +91,11 @@ class PostController extends AbstractController
     {
         // TODO: delete all related documents and image from filesystem
         $postManager = new PostManager();
-        $postManager->delete($id);
+        $post = $postManager->selectOneById($id);
+
+        if ($post['user_id'] === $_SESSION['user_id']) {
+            $postManager->delete($id);
+        }
 
         header('Location: /feed');
     }

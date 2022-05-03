@@ -1,3 +1,14 @@
+:root {
+    /*--bs-primary-rgb: 255, 82, 82;*/
+    --bs-primary-rgb: 255, 107, 107;
+    --bs-primary: rgb(var(--bs-primary-rgb));
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
 /* ICONS */
 
 .icon-s {

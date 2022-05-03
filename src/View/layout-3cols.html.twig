@@ -2,27 +2,27 @@
 
 {% block layout %}
 
-    <div class="container-fluid">
+    <div class="container-fluid bg-light p-0">
 
-        <div class="row">
-            <div class="col p-0">
+            {% include 'components/_header.html.twig' %}
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col col-2">
+                    {% block asidebarLeft %}{% endblock %}
+                </div>
+
+                <div class="col bg-light">
+                    {% block content %}{% endblock %}
+                </div>
+
+                <div class="col col-3">
+                    {% block sidebarRight %}{% endblock %}
+                    {% include 'components/_tricks.html.twig' %}
+                </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col col-2 p-0">
-                {% block asidebarLeft %}{% endblock %}
-                {% include 'components/_footer.html.twig'%}
-            </div>
-
-            <div class="col bg-light">
-                {% block content %}{% endblock %}
-            </div>
-
-            <div class="col col-3">
-                {% block sidebarRight %}{% endblock %}
-            </div>
-        </div>
-
     </div>
+
 {% endblock %}
