@@ -34,7 +34,7 @@ class FeedController extends AbstractController
 
             $posts[$i]['comments'] = $commentsManager->selectByPostId($post['id']);
 
-            $post[$i]['link'] = $post['link'];
+            //$post[$i]['link'] = $post['link'];
 
             // for each comment get from db:
             //      the user, number of likes and calculate time passed from creation

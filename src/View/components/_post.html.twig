@@ -1,5 +1,5 @@
 <div id='{{ post['id'] }}' class="card border-0" style="width: 40rem;">
-    <div class="card-header d-flex justify-content-between align-items-center border-0">
+    <div class="card-header d-flex justify-content-between align-items-center bg-white">
         <div class="d-flex align-items-center">
             <img class="rounded" style="height: 55px; width: 55px; object-fit: cover" src="{{ post['user']['image_url'] }}">
             <div class="d-flex flex-column justify-content-between m-2">
@@ -13,14 +13,14 @@
                 comments <span class="badge bg-secondary">{{ post['comments']|length }}</span>
             </span>
 
-            <span class="position-relative">
-                <a href="/post/like?postid={{ post['id'] }}">
+            <span class="cta-like-post position-relative" data-postid="{{ post['id'] }}">
+                <span>
                 {% if user_logged['id'] in post['usersIdLiked'][0] %}
                     <ion-icon class="icon-m" name="heart"></ion-icon>
                 {% else %}
                     <ion-icon class="icon-m" name="heart-outline"></ion-icon>
                 {% endif %}
-                </a>
+                </span>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ post['nLikes'] }}</span>
                 </span>
 
@@ -32,10 +32,10 @@
                     <li class="d-flex align-items-center">
                         <button class="dropdown-item" type="button"><ion-icon class='icon-s me-2' name="share-social-outline"></ion-icon>Share it on ...</button>
                     </li>
-                    <li class="d-flex align-items-center">
-                        <button class="dropdown-item" type="button"><ion-icon class='icon-s me-2' name="create-outline"></ion-icon>Edit</button>
-                    </li>
                     {% if post['user_id'] == user_logged['id'] %}
+                        <li class="d-flex align-items-center">
+                            <button class="dropdown-item" type="button"><ion-icon class='icon-s me-2' name="create-outline"></ion-icon>Edit</button>
+                        </li>
                         <li class="d-flex align-items-center"><a href="/post/delete?id={{ post['id'] }}"><button class="dropdown-item" type="button"><ion-icon class='icon-s me-2' name="trash-outline"></ion-icon>delete</button></a></li>
                     {% endif %}
                 </ul>
@@ -62,7 +62,7 @@
     </div>
 
     {% if post['comments']|length > 0 %}
-        <div class="card-footer d-flex justify-content-between bg-white">
+        <div class="card-footer d-flex justify-content-between bg-white border-0">
             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#{{ 'comments-' ~ post['id'] }}" aria-expanded="false" aria-controls="{{ 'comments-' ~ post['id'] }}">show/hide comments ({{ post['comments']|length }})</button>
         </div>
     {% endif %}
