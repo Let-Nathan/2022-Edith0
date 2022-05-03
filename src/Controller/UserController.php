@@ -35,4 +35,30 @@ class UserController extends AbstractController
         session_destroy();
         header("Location: /login");
     }
+
+    public function toggleLikePost($postId): void
+    {
+        $userManager = new UserManager();
+
+        if ($userManager->userLikesPost($_SESSION['user_id'], $postId)) {
+            $userManager->deleteLikePost($_SESSION['user_id'], $postId);
+        } else {
+            $userManager->insertLikePost($_SESSION['user_id'], $postId);
+        }
+
+        header('Location: /feed#' . $postId);
+    }
+
+    public function toggleLikeComment($commentId): void
+    {
+        $userManager = new UserManager();
+
+        if ($userManager->userLikesComment($_SESSION['user_id'], $commentId)) {
+            $userManager->deleteLikeComment($_SESSION['user_id'], $commentId);
+        } else {
+            $userManager->insertLikeComment($_SESSION['user_id'], $commentId);
+        }
+
+        header('Location: /feed#' . $commentId);
+    }
 }

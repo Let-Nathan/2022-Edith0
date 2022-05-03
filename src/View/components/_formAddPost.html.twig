@@ -1,18 +1,24 @@
 <div class="card border-0 m-3 p-3" style="width: 40rem;">
-    <form method="post" action="/addpost" enctype="multipart/form-data">
-        <div class="mb-3">
+    <form method="post" action="/post/add" enctype="multipart/form-data">
+        <div>
             <label for="body" class="form-label" hidden>Create a post</label>
-            <textarea class="form-control" name='body' id="body" placeholder="create a post">{{ postBody }}</textarea>
+            <textarea class="form-control ed-textarea" name='body' id="body" placeholder="create a post">{{ postBody }}</textarea>
         </div>
-        <div class="mb-3" style="width: 15rem;">
-            <label for="media" class="form-label">Image</label>
-            <input type="file" class="form-control" name="media[]" id="media">
+        <div class="d-flex align-items-start">
+            <div class="ed-form-control m-3 p-2 ms-0 ps-0 rounded">
+                <label for="media" class="d-flex align-items-center m-0"><ion-icon class='icon-m me-2' name="image-outline"></ion-icon>image</label>
+                <input type="file" class="form-control" name="media[]" id="media" hidden>
+            </div>
+            <div class="ed-form-control m-3 p-2 rounded">
+                <label for="file" class="d-flex align-items-center m-0"><ion-icon class='icon-m me-2' name="document-attach-outline"></ion-icon>documents</label>
+                <input type="file" class="form-control" name="files[]" id="file" multiple hidden>
+            </div>
+            <div class="ed-form-control ed-form-control--url m-3 p-2 rounded">
+                <label for="url" class="d-flex align-items-center m-0"><ion-icon class='icon-m me-2' name="link-outline"></ion-icon>link</label>
+                <input type="url" class="form-control" name="url" id="url" hidden>
+            </div>
         </div>
-        <div class="mb-3" style="width: 15rem;">
-            <label for="file" class="form-label">Docs</label>
-            <input type="file" class="form-control" name="files[]" id="file" multiple>
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Post</button>
+        <button type="submit" class="btn btn-primary">Post</button>
 
         <div>
             {% for error in errors %}
@@ -20,4 +26,6 @@
             {% endfor %}
         </div>
     </form>
+
+
 </div>

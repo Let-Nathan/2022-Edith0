@@ -12,6 +12,13 @@ return [
     'login' => ['UserController', 'login'],
     'news' => ['NewsController', 'showNews'],
     'feed' => ['FeedController', 'showFeed'],
-    'addpost' => ['PostController', 'addPost'],
+    'post/add' => ['PostController', 'addPost'],
+    'post/delete' => ['PostController', 'deletePost', ['id']],
+    'post/like' => ['UserController', 'toggleLikePost', ['postid']],
+    'comment/add' => ['CommentController', 'addComment'],
+    'comment/like' => ['UserController', 'toggleLikeComment', ['commentid']],
+    'comment/delete' => ['CommentController', 'deleteComment', ['id']],
     'logout' => ['UserController', 'logout'],
+    'learning' => ['Learning\ContentController', 'list'],
+    'learning/training' => ['Learning\LearningController', 'show', ['id']]
 ];

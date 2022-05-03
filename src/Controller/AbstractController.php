@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\UsersManager;
+use App\Model\UserManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -26,6 +26,11 @@ abstract class AbstractController
             ]
         );
 
+
+        $userManager = new UserManager();
+
+        $this->user = isset($_SESSION['user_id']) ? $userManager->selectOneById($_SESSION['user_id']) : null;
+        $this->twig->addGlobal('user_logged', $this->user);
         $this->twig->addExtension(new DebugExtension());
     }
 }
