@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Model\LikesNewsManager;
 use App\Model\NewsManager;
-use App\Model\UsersManager;
+use App\Model\UserManager;
 
 class NewsController extends AbstractController
 {
@@ -14,7 +14,7 @@ class NewsController extends AbstractController
     public function showNews(): string
     {
         $newsManager = new NewsManager();
-        $userManager = new UsersManager();
+        $userManager = new UserManager();
         $likesNewsManager = new LikesNewsManager();
 
         $news = $newsManager->selectAll();
