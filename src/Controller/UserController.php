@@ -8,6 +8,11 @@ class UserController extends AbstractController
 {
     public function login(): ?string
     {
+
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /feed');
+        }
+
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

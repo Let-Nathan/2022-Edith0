@@ -9,6 +9,11 @@
     border-color: var(--bs-primary);
 }
 
+.btn-primary:hover {
+    background-color: #fa5252;
+    border-color: #fa5252;
+}
+
 /* ICONS */
 
 .icon-s {
@@ -21,6 +26,10 @@
 
 .icon-b {
     font-size: 35px;
+}
+
+.icon--link:hover {
+    cursor: pointer;
 }
 
 /* FORMS */

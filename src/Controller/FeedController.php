@@ -15,7 +15,11 @@ class FeedController extends AbstractController
      */
     public function showFeed(): string
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+        }
         $postManager = new PostManager();
+
         $userManager = new UserManager();
         $commentsManager = new CommentManager();
         $documentManager = new DocumentManager();
