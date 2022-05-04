@@ -19,4 +19,6 @@ return [
     'comment/like' => ['UserController', 'toggleLikeComment', ['commentid']],
     'comment/delete' => ['CommentController', 'deleteComment', ['id']],
     'logout' => ['UserController', 'logout'],
+    'learning' => ['Learning\ContentController', 'list'],
+    'learning/training' => ['Learning\LearningController', 'show', ['id']],
 ];

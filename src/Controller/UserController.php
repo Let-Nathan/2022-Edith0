@@ -6,11 +6,14 @@ use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
-    public function login()
+    public function login(): ?string
     {
+
         if (isset($_SESSION['user_id'])) {
             header('Location: /feed');
         }
+
+        $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -23,10 +26,14 @@ class UserController extends AbstractController
                     $_SESSION['user_id'] = $user['id'];
 
                     header('Location: /feed');
+                    return null;
+                } else {
+                    $error = 'The password is incorrect';
                 }
             }
         }
-            return $this->twig->render('User/login.html.twig');
+
+        return $this->twig->render('User/login.html.twig', ['error' => $error]);
     }
 
     public function logout()

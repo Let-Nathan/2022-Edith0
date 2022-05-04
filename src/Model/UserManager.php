@@ -13,7 +13,7 @@ class UserManager extends AbstractManager
         $sth = $this->pdo->prepare($query);
         $sth->execute(['email' => $email]);
 
-        return $sth->fetch();
+        return $sth->fetch() ?: null;
     }
 
     public function userLikesPost($userId, $postId): bool

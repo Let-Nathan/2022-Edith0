@@ -9,6 +9,8 @@
 
 session_start();
 
+// TODO: for test only
+$_SESSION['user_id'] = 5;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 if (getenv('ENV') === false) {
