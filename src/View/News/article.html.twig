@@ -1,14 +1,15 @@
 {% extends 'layout-3cols.html.twig' %}
 
 {% block content %}
-    <h1>News</h1>
 
         <div class="card m-3">
             <div class="card-body">
-                <div class="headercard d-flex">
-                    <img src="{{ news['media_url'] }}" class="card-img-top news-img-card" alt="content image news">
+                <div class="headercard">
+                    <div class="d-flex justify-content-center">
+                    <h1 class="card-title">{{news['title']}}</h1>
+                    </div>
+                    <img src="{{ news['media_url'] }}" class="card-img-top article-img-card" alt="content image article">
                     <div class="d-flex flex-wrap ms-2 mt-2">
-                        <h5 class="card-title align-self">{{news['title']}}</h5>
                         <h6 class="card-subtitle text-muted">Author : {{news['user']['firstname'] ~ ' ' ~ news['user']['lastname'] ~ ' | ' ~ news['user']['position']}}</h6>
                     </div>
                 </div>

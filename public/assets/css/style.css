@@ -75,3 +75,11 @@ background-color: var(--bs-gray-200);
     height: 10rem;
     object-fit: cover;
 }
+
+/* ARTICLE */
+
+.article-img-card{
+    height: 30rem;
+    object-fit: cover;
+    opacity: 80%;
+}
