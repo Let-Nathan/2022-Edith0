@@ -11,6 +11,7 @@ return [
     '' => ['HomeController', 'index',],
     'login' => ['UserController', 'login'],
     'news' => ['NewsController', 'showNews'],
+    'news/article' => ['ArticleController', 'showArticle', ['id']],
     'feed' => ['FeedController', 'showFeed'],
     'post/add' => ['PostController', 'addPost'],
     'post/delete' => ['PostController', 'deletePost', ['id']],

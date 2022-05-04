@@ -3,10 +3,21 @@
 {% block content %}
     <h1>News</h1>
 
-    {% for content in news %}
+        <div class="card m-3">
+            <div class="card-body">
+                <div class="headercard d-flex">
+                    <img src="{{ news['media_url'] }}" class="card-img-top news-img-card" alt="content image news">
+                    <div class="d-flex flex-wrap ms-2 mt-2">
+                        <h5 class="card-title align-self">{{news['title']}}</h5>
+                        <h6 class="card-subtitle text-muted">Author : {{news['user']['firstname'] ~ ' ' ~ news['user']['lastname'] ~ ' | ' ~ news['user']['position']}}</h6>
+                    </div>
+                </div>
+                <p class="card-text mt-3">{{news['body']}}</p>
 
-
-
-    {%endfor %}
+                <div class="d-flex ms-2">
+                    <p>{{news['create_at']}}</p>
+                </div>
+            </div>
+        </div>
 
 {%endblock %}
