@@ -1,0 +1,36 @@
+{% extends 'layout-3cols.html.twig' %}
+    {% block asidebarLeft %}
+        {% include 'components/_asideBarLeft.html.twig'%}
+    {% endblock %}
+        {% block content %}
+            <!-- Need to add upload files  -->
+            <div class="d-flex flex-column align-items-center">
+                <form method="post" enctype="application/x-www-form-urlencoded">
+
+                    <!-- News title -->
+
+                    <div class="form-group">
+                        <p class="h1 d-flex justify-content-center"> Add your title </p>
+                        <label for="title" class=" h1 d-flex justify-content-center"> </label>
+                        <input type="text" class="form-control mb-5" id="title" placeholder="add your main title" name="title">
+                    </div>
+
+                    <!-- News Media -->
+
+                    <div class="ed-form-control m-3 p-2 ms-0 ps-0 rounded">
+                        <label for="media" class="d-flex align-items-center m-0"><ion-icon class='icon-m me-2' name="image-outline"></ion-icon>image</label>
+                        <input type="file" class="form-control" name="media[]" id="media" hidden>
+                    </div>
+
+                    <!-- News body -->
+
+                    <div class="form-group">
+                        <p class="h3">Add your news body</p>
+                        <label for="body" class=" h1 d-flex justify-content-center"></label>
+                        <textarea class="form-control mb-5" id="body" placeholder="add your body content" name="body"> </textarea>
+                    </div>
+                    
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </div>
+        {% endblock %}
