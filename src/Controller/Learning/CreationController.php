@@ -61,8 +61,6 @@ class CreationController extends AbstractController
 
                 header('Location: /learning');
         }
-
         return $this->twig->render('Learning/add.html.twig', ['learning' => $learnings]);
     }
-
 }
