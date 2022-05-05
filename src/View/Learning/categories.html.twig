@@ -1,33 +1,44 @@
 {% extends 'layout-3cols.html.twig' %}
+{% block asidebarLeft %}
+    {% include 'components/_asideBarLeft.html.twig'%}
+{% endblock %}
     {% block content %}
         {% for learnings in learning %}
-            <div class="accordion" id="accordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-a-{{ learnings.id }}" aria-expanded="true" aria-controls="collapseOne">
-                            <img src="{{ learnings.img_url }}" class="img-fluid float-left me-4" style="height: 5rem; width: 8rem;">
-                            <p class="h2">{{ learnings.title }} - {{ learnings.description }} </p>
-                        </button>
-                    </h2>
-                    {% for content in learnings.content %}
-                <div id="collapseOne-a-{{content.elearning_id }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
-                    {% endfor %}
-                    <div class="accordion-body">
-                        <ul class="list-group">
-                            {% for content in learnings.content %}
-                                <div class="col-12">
-                                    <li class="list-group-item">
-                                        <img src="{{ content.img_url }}" alt="{{ content.title }}" class="float-left" style="max-height: 2rem; max-width: 2rem;">
-                                        <p class="h3">{{ content.title }} </p> {{ content.body }}
-                                        <div class="d-flex justify-content-end">
-                                            <a href="learning/training?id={{ content.id }}" class="btn btn-primary  d-flex justify-content-center pb-4" style="width: 8rem; height: 2rem">Display</a>
-                                        </div>
-                                    </li>
-                                </div>
-                            {% endfor %}
-                        </ul>
+            <div class="d-flex flex-column align-items-center">
+                <div class="card border-0 m-2 p-2" style="width: 100%;">
+                    <div class="accordion d-flex col-12" id="{{ learnings.id }}">
+                        <div class="accordion-item" style="width: 100%;">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button bg-light m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-a-{{ learnings.id }}" aria-expanded="true" aria-controls="collapse">
+                                    <img src="{{ learnings.img_url }}" class="img-fluid float-left me-4" style="height: 5rem; width: 8rem;">
+                                    <p class="blockquote me-4 col-2 h2 text-secondary"> {{ learnings.title }}</p>
+                                    <cite title="Source Title" class="text-dark"> {{ learnings.description }} </cite>
+                                </button>
+                            </h2>
+                        </div>
                     </div>
+                    {% for content in learnings.content %}
+                        <div id="collapseOne-a-{{ content.elearning_id }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <div class="col-12">
+                                        <li class="card list-group-item">
+                                            <img src="{{ content.img_url }}" alt="#" class="card-image-overlay" style="max-height: 2rem; max-width: 2rem;">
+                                                <p class="h5 d-flex col-3 mt-2">{{ content.title }} </p>
+                                                <div class="col-12 d-flex justify-content-center">
+                                                    <p class="font-weight-bold">{{ content.body }}</p>
+                                                </div>
+                                                <div class="d-flex justify-content-end">
+                                                <a href="learning/training?id={{ content.id }}" class="btn btn-primary d-flex justify-content-center align-items-center p-0 m-1" style="width: 8rem; height: 2rem">Display</a>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
+        {% endfor %}
+        <a href="learning/add" class="btn-primary">Create Content</a>
     {% endblock %}

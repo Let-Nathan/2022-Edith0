@@ -55,7 +55,7 @@ background-color: var(--bs-gray-200);
 }
 .btn-change:hover {
     -webkit-transform: scale(1.05);
-    background: #31708f;
+    background: white;
 }
 .userProfilePicture {
     width: 10rem;
