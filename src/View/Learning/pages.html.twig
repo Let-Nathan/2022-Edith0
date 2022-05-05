@@ -1,0 +1,27 @@
+{% extends 'layout-3cols.html.twig' %}
+    {% block asidebarLeft %}
+        {% include 'components/_asideBarLeft.html.twig'%}
+    {% endblock %}
+            {% block content %}
+
+                <div class="d-flex flex-column align-items-center">
+                    <p class="h1 d-flex justify-content-center mb-5"> {{ eLearning.title }}</p>
+                    <div class="groupe-card">
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                            <img src="{{ eLearning.img_header }}" class="img-fluid mb-5" alt="{{ eLearning.title }}">
+                            <div class="card-body col-11 border">
+                                <p> {{ manager.header }} </p>
+                            </div>
+                        </div>
+                        <div class="d-flex  m-5  align-items-center flex-column">
+                            <p class="h3 mb-5">{{ eLearning.title_body }}</p>
+                            <img src="{{ eLearning.img_body }}" class="img-fluid mb-5 border" alt="{{ eLearning.title }}">
+                            <div class="card-body border">
+                                {{ eLearning.body }}
+                            </div>
+                            <a href="learning/delete?={{ eLearning.id }}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {%endblock %}
+
