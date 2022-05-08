@@ -1,0 +1,40 @@
+{% extends 'layout-3cols.html.twig' %}
+    {% block asidebarLeft %}
+        {% include 'components/_asideBarLeft.html.twig'%}
+    {% endblock %}
+        {% block content %}
+            <div class="d-flex flex-column align-items-center">
+                <form method="post" enctype="application/x-www-form-urlencoded">
+                    <!-- Title form -->
+                    <div class="form-group">
+                        <p class="h1 d-flex justify-content-center">Title</p>
+                        <label for="title" class=" h1 d-flex justify-content-center"> </label>
+                        <textarea class="form-control mb-5" id="title" placeholder="Add your main title" name="title" rows="1">{{ content.title }}</textarea>
+                    </div>
+                    <img src="{{ content.img_header }}" alt="{{ content.title }}">
+                    <!-- Header description -->
+                    <div class="form-group">
+                        <p class="h1 d-flex justify-content-center">Introduction</p>
+                        <label for="header" class=" h1 d-flex justify-content-center"> </label>
+                        <textarea class="form-control mb-5" id="header" placeholder="Add your header description" name="header" rows="6">{{ content.header }}</textarea>
+                    </div>
+
+                    <!-- Title body form -->
+                    <div class="form-group">
+                        <p class="h1 d-flex justify-content-center">Content title </p>
+                        <label for="title-body" class=" h1 d-flex justify-content-center"></label>
+                        <textarea class="form-control mb-5" id="title-body" placeholder="Add your body title" name="title-body" rows="1">{{ content.title_body }}</textarea>
+                    </div>
+                    <img src="{{ content.img_body }}" alt="{{ content.title_body }}">
+
+                    <!-- Body content -->
+                    <div class="form-group">
+                        <p class="h1 d-flex justify-content-center">Content</p>
+                        <label for="body" class=" h1 d-flex justify-content-center"></label>
+                        <textarea class="form-control mb-5" id="body" placeholder="Add your body content" name="body" rows="12"> {{ content.body }}</textarea>
+                    </div>
+
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </div>
+        {% endblock %}
