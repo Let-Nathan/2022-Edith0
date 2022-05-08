@@ -11,16 +11,13 @@ class CreationController extends AbstractController
 {
     public function addLearning(): string
     {
-        $LearningManager = new LearningManager();
-        $learnings = $LearningManager->selectAll('id', 'ASC');
+        $learningManager = new LearningManager();
+        $learnings = $learningManager->selectAll('id', 'ASC');
 
         /**
          * @TODO Verification
          */
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $pageManager = new PageManager();
-            $contentsManager = new ContentsManager();
-
             $learningId = intval($_POST['contentId']);
             $title = trim($_POST['title'], '');
             $titleBody = trim($_POST['title-body'], '');

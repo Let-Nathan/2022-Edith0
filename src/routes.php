@@ -24,5 +24,5 @@ return [
     'learning/training' => ['Learning\LearningController', 'show', ['id']],
     'learning/add' => ['Learning\CreationController', 'addLearning'],
     'learning/delete' => ['Learning\RemoveController', 'deleteLearning', ['id']],
-    'learning/update' => ['Learning\UpdateController', 'deleteLearning', ['id']]
+    'learning/update' => ['Learning\UpdateController', 'updateLearning', ['id']]
 ];
