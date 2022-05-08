@@ -21,45 +21,32 @@ class CreationController extends AbstractController
             $pageManager = new PageManager();
             $contentsManager = new ContentsManager();
 
-        /**
-         * @POST For the pages content
-         */
+            $learningId = intval($_POST['contentId']);
+            $title = trim($_POST['title'], '');
+            $titleBody = trim($_POST['title-body'], '');
+            $body = trim($_POST['body'], '');
+            $header = trim($_POST['header'], '');
+            $description = substr($body, 0, 50);
+            $imgBody = '';
+            $imgHeader = '';
+            $imgContainer = '';
 
-                //$_POST for learning pages contents & catégories
-                $learningId = intval($_POST['contentId']);
-                $title = $_POST['title'];
-                $titleBody = $_POST['title-body'];
-                $body = $_POST['body'];
-                $imgHeader = '';
-                $header = '';
-                $imgBody = '';
-                $imgContainer = '';
-                $description = substr($body, 0, 50);
-            //Set default parent img for learning container ('WIP')
-            foreach ($learnings as $values) {
-                if ($values['id'] === $learningId) {
-                    $imgContainer = $values['img_url'];
-                }
-            }
-                //Get the return of last insert id in Table, and insert into Content
-               $lastInsertId = $contentsManager->addContents(
-                   $title,
-                   $imgContainer,
-                   $description,
-                   $learningId
-               );
-                //Insert the pages content into pages bdd
-                $pageManager->addLearning(
-                    $lastInsertId,
-                    $title,
-                    $titleBody,
-                    $body,
-                    $imgHeader,
-                    $header,
-                    $imgBody
-                );
+            $content = [$title, $imgContainer, $description, $learningId];
+            $learning = [$title, $titleBody, $body, $imgHeader, $header, $imgBody];
 
+            /**
+             * @CHEKING POST VALUES
+             */
+            $insertController = new InsertController();
+            $errors = $insertController->errorsCheck($title, $learningId, $header, $titleBody, $body);
+
+            /**
+             * @EMPTY-ERRORS => insert
+             */
+            if (!$errors) {
+                $insertController->insertCheck($content, $learning);
                 header('Location: /learning');
+            }
         }
         return $this->twig->render('Learning/add.html.twig', ['learning' => $learnings]);
     }

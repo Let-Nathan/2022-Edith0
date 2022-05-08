@@ -17,4 +17,3 @@ class RemoveController extends AbstractController
         return $this->twig->render('Learning/pages.html.twig');
     }
 }
-

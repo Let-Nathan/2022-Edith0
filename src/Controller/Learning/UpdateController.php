@@ -14,9 +14,6 @@ class UpdateController extends AbstractController
         $content = $pageManager->selectById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $pageManager = new PageManager();
-            $contentsManager = new ContentsManager();
-
             $learningId = intval($_POST['contentId']);
             $title = trim($_POST['title'], '');
             $titleBody = trim($_POST['title-body'], '');
