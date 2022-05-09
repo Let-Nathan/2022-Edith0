@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Controller\Learning;
+namespace App\Services;
 
-use App\Controller\AbstractController;
 use App\Model\Learning\ContentsManager;
 use App\Model\Learning\PageManager;
 
-class InsertController extends AbstractController
+class LearningFormServices
 {
-    public function errorsCheck($title, $learningId, $header, $titleBody, $body): ?array
+    public function errorsCheck($id, $title, $header, $titleBody, $body): ?array
     {
         $errors = [];
         switch ($title) {
@@ -19,7 +18,7 @@ class InsertController extends AbstractController
                 $errors['title'] = 'Title must not exceed 80 characters.';
                 break;
         }
-        if (empty($learningId)) {
+        if (empty($id)) {
             $errors['category'] = 'You must choose a category before send .';
         }
         if (strlen($header) <= 5) {
@@ -28,12 +27,13 @@ class InsertController extends AbstractController
         if (strlen($titleBody) <= 5) {
             $errors['titleBody'] = 'Title must have at least 5 characters';
         }
-        if (strlen($body) <= 5) {
-            $errors['body'] = 'Your eLearning must have at least 5 characters';
+        if (strlen($body) <= 30) {
+            $errors['body'] = 'Your eLearning must have some contents';
         }
-        return $errors;
+            return $errors;
     }
-    public function insertCheck(array $content, array $learning): void
+
+    public function insert(array $content, array $learning): void
     {
 
         $pageManager = new PageManager();

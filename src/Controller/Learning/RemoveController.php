@@ -7,13 +7,11 @@ use App\Model\Learning\ContentsManager;
 
 class RemoveController extends AbstractController
 {
-    public function deleteLearning(): string
+    public function deleteLearning(): void
     {
         $contentId = intval($_GET['id']);
         $contentManager = new ContentsManager();
         $contentManager->delete($contentId);
         header('Location: /learning');
-
-        return $this->twig->render('Learning/pages.html.twig');
     }
 }
