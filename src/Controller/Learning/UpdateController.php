@@ -16,11 +16,7 @@ class UpdateController extends AbstractController
         $learningManager = new LearningManager();
         $learning = $learningManager->selectAll('id', 'DESC');
         $page = $pageManager->selectById($id);
-
         $errors = [];
-        /**
-         * @TODO update
-         */
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $categoryId = intval($_POST['contentId']);
@@ -29,31 +25,41 @@ class UpdateController extends AbstractController
             $body = trim($_POST['body']);
             $header = trim($_POST['header']);
             $description = substr($body, 0, 50);
-            $imgBody = '';
             $imgHeader = '';
+            $imgBody = '';
             $imgContainer = '';
 
+            /**
+             * @TODO Add bdd relational to stock container images
+             */
             foreach ($learning as $value) {
                 $categoryId === $value['id'] ?  $imgContainer = $value['img_url'] : $imgContainer = '' ;
             }
             /**
-             * @CHEKING POST VALUES
+             * @TODO POST images on add && update
+             */
+            foreach ($page as $value) {
+                $imgHeader = $value['img_header'];
+                $imgBody = $value['img_body'];
+            }
+            /**
+             * @TODO CHECK FOR IMAGES
              */
             $insertService = new LearningFormServices();
             $errors = $insertService->errorsCheck($categoryId, $title, $header, $titleBody, $body);
+
             /**
              * @EMPTY-ERRORS => insert
              */
-
             if (!$errors) {
                 $contentManager = new ContentsManager();
                 $containerId = $contentManager->selectOneById($id);
                 $contentManager->upDate(
+                    $containerId['id'],
                     $title,
                     $imgContainer,
                     $description,
-                    $categoryId,
-                    $containerId['id']
+                    $categoryId
                 );
 
                 $pageManager->upDate(

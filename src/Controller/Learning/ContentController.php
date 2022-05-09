@@ -22,7 +22,6 @@ class ContentController extends AbstractController
         foreach ($learning as $index => $value) {
             $learning[$index]['content'] = $contentsManager->selectContentId($value['id']);
         }
-
         return $this->twig->render('Learning/categories.html.twig', ['learning' => $learning]);
     }
 }
