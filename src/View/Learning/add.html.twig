@@ -1,0 +1,43 @@
+{% extends 'layout-3cols.html.twig' %}
+    {% block asidebarLeft %}
+        {% include 'components/_asideBarLeft.html.twig'%}
+    {% endblock %}
+        {% block content %}
+                        <!-- Need to add upload files  -->
+        <div class="d-flex flex-column align-items-center">
+            <form method="post" enctype="application/x-www-form-urlencoded">
+
+                        <!-- Title form -->
+
+                <div class="form-group">
+                    <p class="h1 d-flex justify-content-center"> Add your main title </p>
+                    <label for="title" class=" h1 d-flex justify-content-center"> </label>
+                    <input type="text" class="form-control mb-5" id="title" placeholder="add your main title" name="title">
+                </div>
+                        <!-- Title body form -->
+
+                <div class="form-group">
+                    <p class="h3"> Body Title </p>
+                    <label for="title-body" class=" h1 d-flex justify-content-center"></label>
+                    <input type="text" class="form-control mb-5" id="title-body" placeholder="add your content title" name="title-body">
+                </div>
+                        <!-- Body content -->
+
+                <div class="form-group">
+                    <p class="h3">Add your body content</p>
+                    <label for="body" class=" h1 d-flex justify-content-center"></label>
+                    <textarea class="form-control mb-5" id="body" placeholder="add your body content" name="body"> </textarea>
+                </div>
+                <div class="form-group">
+                <label for="contentId"></label>
+                <select name='contentId' id="contentId">
+                    <option value="">Select Categories</option>
+                    {% for learning in learning %}
+                    <option value="{{ learning.id }}">{{ learning.title }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <input type="submit" name="submit" value="Submit">
+            </form>
+        </div>
+     {% endblock %}

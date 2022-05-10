@@ -11,6 +11,7 @@ return [
     '' => ['UserController', 'login',],
     'login' => ['UserController', 'login'],
     'news' => ['NewsController', 'showNews'],
+    'news/article' => ['ArticleController', 'showArticle', ['id']],
     'feed' => ['FeedController', 'showFeed'],
     'post/add' => ['PostController', 'addPost'],
     'post/delete' => ['PostController', 'deletePost', ['id']],
@@ -22,4 +23,7 @@ return [
     'learning' => ['Learning\ContentController', 'list'],
     'learning/training' => ['Learning\LearningController', 'show', ['id']],
     'feed/rss' => ['RssController', 'feed'],
+    'learning/add' => ['Learning\CreationController', 'addLearning'],
+    'learning/delete' => ['Learning\CreationController', 'deleteLearning', ['id']]
+
 ];

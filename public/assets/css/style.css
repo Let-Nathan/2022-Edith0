@@ -55,7 +55,7 @@ background-color: var(--bs-gray-200);
 }
 .btn-change:hover {
     -webkit-transform: scale(1.05);
-    background: #31708f;
+    background: white;
 }
 .userProfilePicture {
     width: 10rem;
@@ -69,4 +69,26 @@ background-color: var(--bs-gray-200);
 
 .copyrightFooter{
     margin-top: 9rem;
+}
+
+/* NEWS */
+
+.newspaper{
+    height: 37rem;
+    object-fit: cover;
+    opacity: 80%;
+}
+
+.news-img-card{
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+/* ARTICLE */
+
+.article-img-card{
+    height: 30rem;
+    object-fit: cover;
+    opacity: 80%;
 }

@@ -12,12 +12,17 @@ class ContentController extends AbstractController
     {
         $learningManager = new LearningManager();
         $contentsManager = new ContentsManager();
-        // Display Learning
+        /**
+         * Display Learning
+         */
         $learning = $learningManager->selectAll('id', 'ASC');
-        // Show content of each Learning catégories
+        /**
+         * Show content of each Learning catégories
+         */
         foreach ($learning as $index => $value) {
             $learning[$index]['content'] = $contentsManager->selectContentId($value['id']);
         }
+
         return $this->twig->render('Learning/categories.html.twig', ['learning' => $learning]);
     }
 }

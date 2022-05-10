@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\ArticleContent\ArticleContentManager;
+use App\Model\Learning\PageManager;
 use App\Model\LikesNewsManager;
 use App\Model\NewsManager;
 use App\Model\UserManager;
