@@ -12,6 +12,9 @@ class UpdateController extends AbstractController
 {
     public function updateLearning(int $id): string
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+        }
         $pageManager = new PageManager();
         $learningManager = new LearningManager();
         $learning = $learningManager->selectAll('id', 'DESC');

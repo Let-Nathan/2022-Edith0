@@ -10,6 +10,9 @@ class ContentController extends AbstractController
 {
     public function list(): string
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+        }
         $learningManager = new LearningManager();
         $contentsManager = new ContentsManager();
         /**
