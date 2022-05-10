@@ -1,13 +1,13 @@
-{% extends 'layout-3cols.html.twig' %}
+{% extends 'layout-2cols.html.twig' %}
     {% block asidebarLeft %}
         {% include 'components/_asideBarLeft.html.twig'%}
     {% endblock %}
         {% block content %}
             <!-- Need to add upload files  -->
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center mb-5 mt-5">
                 <form method="post" enctype="application/x-www-form-urlencoded">
                     <!-- Title form -->
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column align-items-center">
                         <p class="h1 d-flex justify-content-center">{{ content.title }}</p>
                         <p class="alert text-danger">{{ errors.title }}</p>
                         <label for="title" class=" h1 d-flex justify-content-center"> </label>
@@ -15,11 +15,11 @@
                         {{ errors.imgHeader }}
                         <label for="imgHeader" class=" h1 d-flex justify-content-center"> </label>
                         <input class="form-control mb-5" id="imgHeader" placeholder="Input link to display header images" name="imgHeader" rows="1" style="width: 50rem;">
-                    </div>
                     <img src="{{ content.img_header }}" class="img-fluid mb-5" alt="{{ content.title }}">
+                    </div>
 
                     <!-- Header description -->
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column align-items-center">
                         <p class="h1 d-flex justify-content-center">Introduction</p>
                         <p class="alert text-danger">{{ errors.header }}</p>
                         <label for="header" class=" h1 d-flex justify-content-center"> </label>
@@ -27,7 +27,7 @@
                     </div>
 
                     <!-- Title body form -->
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column">
                         <p class="h1 d-flex justify-content-center">{{ content.title_body}}</p>
                         <p class="alert text-danger">{{ errors.titleBody }}</p>
                         <label for="title-body" class=" h1 d-flex justify-content-center"></label>
@@ -39,7 +39,7 @@
                     <img src="{{ content.img_body }}" class="img-fluid mb-5 border" alt="{{ content.title }}">
 
                     <!-- Body content -->
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column align-items-center">
                         <p class="h1 d-flex justify-content-center">Content</p>
                         <p class="alert text-danger">{{ errors.body }}</p>
                         <label for="body" class=" h1 d-flex justify-content-center"></label>
@@ -47,11 +47,11 @@
                     </div>
 
                     <!-- List select to add in the good container -->
-                    <div class="form-group">
+                    <div class="form-group d-flex gap-2">
                         <p class="alert text-danger">{{ errors.category }}</p>
-                        <input type="submit" name="submit" value="Create" class="btn-primary">
                         <label for="contentId"></label>
-                        <select name='contentId' id="contentId">
+                        <input type="submit" name="submit" value="Create" class="btn btn-primary">
+                        <select name='contentId' id="contentId" class="p-2 rounded">
                             <option value="">Categories for your eLearning</option>
                             {% for learning in learning %}
                                 <option value="{{ learning.id }}">{{ learning.title }}</option>
