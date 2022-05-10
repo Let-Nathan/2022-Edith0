@@ -1,4 +1,4 @@
-{% extends 'layout-3cols.html.twig' %}
+{% extends 'layout-2cols.html.twig' %}
 {% block asidebarLeft %}
     {% include 'components/_asideBarLeft.html.twig'%}
 {% endblock %}
@@ -6,7 +6,7 @@
         {% for learnings in learning %}
             <div class="d-flex flex-column align-items-center ">
                 <div class="card border-0 m-2 p-12 shadow p-0 m-0 bg-white rounded " style="width: 100%;">
-                    <div class="accordion d-flex col-12" id="{{ learnings.id }}">
+                    <div class="accordion d-flex" id="{{ learnings.id }}">
                         <div class="accordion-item" style="width: 100%;">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button bg-light m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-a-{{ learnings.id }}" aria-expanded="true" aria-controls="collapse">
