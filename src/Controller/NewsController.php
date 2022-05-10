@@ -39,14 +39,12 @@ class NewsController extends AbstractController
                 $_SESSION['postBody'] = $_POST['body'];
                 $errors[] = 'Your post must be of at least 10 characters';
             }
+
             $addNews = array_map('trim', $_POST);
 
             // verification champs news
             if (empty($addNews['title'])) {
                 $errors[] = 'The title is required';
-            }
-            if (empty($addNews['media_url'])) {
-                $errors[] = 'The media is required';
             }
             if (empty($addNews['body'])) {
                 $errors[] = 'The body is required';
@@ -54,11 +52,22 @@ class NewsController extends AbstractController
             if (!empty($addNews['title']) && strlen($addNews['title']) > 255) {
                 $errors[] = 'Too many characters in the title';
             }
-            if (!empty($addNews['media_url']) && strlen($addNews['media_url']) > 255) {
-                $errors[] = 'Too many characters in the media Url';
-            }
             if (!empty($addNews['body']) && strlen($addNews['body']) > 5000) {
                 $errors[] = 'Too many characters in the body';
+            }
+
+            // upload media
+
+            $fileUploader = new FileUploader();
+
+            $fileModel = new FileModel($_FILES['media']);
+            $mediaUrl = null;
+            if (file_exists($fileModel->getTmpName())) {
+                try {
+                    $mediaUrl = $fileUploader->uploadMedia($fileModel);
+                } catch (FileExeption $e) {
+                    $errors[] = $e->getMessage();
+                }
             }
 
             if (empty($errors)) {

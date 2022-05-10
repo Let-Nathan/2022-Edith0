@@ -12,7 +12,7 @@
             </div>
             <!-- Need to add upload files  -->
             <div class="d-flex flex-column align-items-center">
-                <form method="post" enctype="application/x-www-form-urlencoded">
+                <form method="post" enctype="multipart/form-data">
 
                     <!-- News title -->
 
@@ -26,7 +26,7 @@
 
                     <div class="ed-form-control m-3 p-2 ms-0 ps-0 rounded">
                         <label for="media" class="d-flex align-items-center m-0"><ion-icon class='icon-m me-2' name="image-outline"></ion-icon>image</label>
-                        <input type="file" class="form-control" name="media[]" id="media" hidden>
+                        <input type="file" class="form-control" name="media" id="media" hidden>
                     </div>
 
                     <!-- News body -->
