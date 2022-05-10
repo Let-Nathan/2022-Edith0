@@ -10,6 +10,7 @@ class CreationController extends AbstractController
 {
     public function addLearning(): string
     {
+
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
         }

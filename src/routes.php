@@ -22,6 +22,7 @@ return [
     'logout' => ['UserController', 'logout'],
     'learning' => ['Learning\ContentController', 'list'],
     'learning/training' => ['Learning\LearningController', 'show', ['id']],
+    'feed/rss' => ['RssController', 'feed'],
     'learning/add' => ['Learning\CreationController', 'addLearning'],
     'learning/delete' => ['Learning\RemoveController', 'deleteLearning', ['id']],
     'learning/update' => ['Learning\UpdateController', 'updateLearning', ['id']]

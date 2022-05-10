@@ -22,13 +22,13 @@ class UserController extends AbstractController
 
                 $user = $userManager->getOneByEmail($email);
 
-                if (password_verify($_POST['password'], $user['password'])) {
+                if ($user && password_verify($_POST['password'], $user['password'])) {
                     $_SESSION['user_id'] = $user['id'];
 
                     header('Location: /feed');
                     return null;
                 } else {
-                    $error = 'The password is incorrect';
+                    $error = 'Email and/or password incorrect.';
                 }
             }
         }
