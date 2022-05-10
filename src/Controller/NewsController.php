@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Model\NewsManager;
 use App\Model\LikesNewsManager;
 use App\Model\UserManager;
+use App\Services\FileExeption;
+use App\Upload\FileModel;
+use App\Upload\FileUploader;
 
 class NewsController extends AbstractController
 {
@@ -31,8 +34,14 @@ class NewsController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = [];
 
-             $addNews = array_map('trim', $_POST);
+            // verification body
+            if (!isset($_POST['body']) || strlen($_POST['body']) < 10) {
+                $_SESSION['postBody'] = $_POST['body'];
+                $errors[] = 'Your post must be of at least 10 characters';
+            }
+            $addNews = array_map('trim', $_POST);
 
+            // verification champs news
             if (empty($addNews['title'])) {
                 $errors[] = 'The title is required';
             }
@@ -60,5 +69,18 @@ class NewsController extends AbstractController
             }
         }
         return $this->twig->render('/news/add.html.twig');
+    }
+
+    public function deleteNews(int $id)
+    {
+        // TODO: delete all related documents and image from filesystem
+        $newsManager = new NewsManager();
+        $news = $newsManager->selectOneById($id);
+
+        if ($news['user_id'] === $_SESSION['user_id']) {
+            $newsManager->delete($id);
+        }
+
+        header('Location: /feed');
     }
 }
