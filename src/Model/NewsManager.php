@@ -31,7 +31,8 @@ class NewsManager extends AbstractManager
         ?string $body,
     ) {
 
-        $query = "INSERT INTO " . self::TABLE . " (title, media_url, body, user_id) VALUES (:title, :media_url, :body, :userId)";
+        $query = "INSERT INTO " . self::TABLE . " (title, media_url, body, user_id)
+        VALUES (:title, :media_url, :body, :userId)";
 
         $sth = $this->pdo->prepare($query);
 
@@ -43,5 +44,15 @@ class NewsManager extends AbstractManager
         ]);
 
         return $this->pdo->lastInsertId();
+    }
+
+    public function selectAllNews(string $orderBy = 'create_at', string $direction = 'DESC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
     }
 }

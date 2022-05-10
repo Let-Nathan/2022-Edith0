@@ -20,7 +20,7 @@ class NewsController extends AbstractController
         $userManager = new UserManager();
         $likesNewsManager = new LikesNewsManager();
 
-        $news = $newsManager->selectAll();
+        $news = $newsManager->selectAllNews();
 
         foreach ($news as $i => $new) {
             $news[$i]['user'] = $userManager->selectOneById($new['user_id']);
