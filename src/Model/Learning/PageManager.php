@@ -38,4 +38,35 @@ class PageManager extends AbstractManager
             'titleBody' => $titleBody,
         ]);
     }
+
+    public function upDate(
+        int $id,
+        int $contentId,
+        string $title,
+        string $titleBody,
+        string $body,
+        string $imgHeader,
+        string $header,
+        string $imgBody,
+    ): ?int {
+        $stmt = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET content_id = :content_id,
+            title = :title,
+            body = :body,
+            img_header = :img_header,
+            header = :header,
+            img_body = :img_body,
+            title_body = :title_body " .
+            " WHERE id =" . $id);
+        $stmt->execute([
+            'title' => $title,
+            'content_id' => $contentId,
+            'body' => $body,
+            'img_header' => $imgHeader,
+            'header' => $header,
+            'img_body' => $imgBody,
+            'title_body' => $titleBody
+        ]);
+        return (int) $this->pdo->lastInsertId();
+    }
 }

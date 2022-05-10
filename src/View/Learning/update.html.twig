@@ -3,19 +3,20 @@
         {% include 'components/_asideBarLeft.html.twig'%}
     {% endblock %}
         {% block content %}
-                   <!-- Need to add upload files  -->
+            <!-- Need to add upload files  -->
             <div class="d-flex flex-column align-items-center">
                 <form method="post" enctype="application/x-www-form-urlencoded">
                     <!-- Title form -->
                     <div class="form-group">
-                        <p class="h1 d-flex justify-content-center">Title</p>
-                            <p class="alert text-danger">{{ errors.title }}</p>
+                        <p class="h1 d-flex justify-content-center">{{ content.title }}</p>
+                        <p class="alert text-danger">{{ errors.title }}</p>
                         <label for="title" class=" h1 d-flex justify-content-center"> </label>
                         <textarea class="form-control mb-5" id="title" placeholder="Create your eLearning title" name="title" rows="1" style="width: 50rem;">{{ content.title }}</textarea>
                         {{ errors.imgHeader }}
                         <label for="imgHeader" class=" h1 d-flex justify-content-center"> </label>
                         <input class="form-control mb-5" id="imgHeader" placeholder="Input link to display header images" name="imgHeader" rows="1" style="width: 50rem;">
-                            </div>
+                    </div>
+                    <img src="{{ content.img_header }}" class="img-fluid mb-5" alt="{{ content.title }}">
 
                     <!-- Header description -->
                     <div class="form-group">
@@ -27,14 +28,15 @@
 
                     <!-- Title body form -->
                     <div class="form-group">
-                        <p class="h1 d-flex justify-content-center">Content title </p>
+                        <p class="h1 d-flex justify-content-center">{{ content.title_body}}</p>
                         <p class="alert text-danger">{{ errors.titleBody }}</p>
                         <label for="title-body" class=" h1 d-flex justify-content-center"></label>
                         <textarea class="form-control mb-5" id="title-body" placeholder="" name="title-body" rows="1">{{ content.title_body }}</textarea>
-                        <p class="alert text-danger">{{ errors.imgBody }}</p>
+                        {{ errors.imgBody }}
                         <label for="imgBody" class=" h1 d-flex justify-content-center"> </label>
-                        <input class="form-control mb-5" id="imgBody" placeholder="Input link to display main images" name="imgBody" rows="1" style="width: 50rem;">
+                        <input class="form-control mb-5" id="imgBody" placeholder="Input link to display header images" name="imgBody" rows="1" style="width: 50rem;">
                     </div>
+                    <img src="{{ content.img_body }}" class="img-fluid mb-5 border" alt="{{ content.title }}">
 
                     <!-- Body content -->
                     <div class="form-group">
@@ -52,12 +54,11 @@
                         <select name='contentId' id="contentId">
                             <option value="">Categories for your eLearning</option>
                             {% for learning in learning %}
-                            <option value="{{ learning.id }}">{{ learning.title }}</option>
+                                <option value="{{ learning.id }}">{{ learning.title }}</option>
                             {% endfor %}
                         </select>
-
                     </div>
 
-            </form>
-        </div>
-     {% endblock %}
+                </form>
+            </div>
+        {% endblock %}
