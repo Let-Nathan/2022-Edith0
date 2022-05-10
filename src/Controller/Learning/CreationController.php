@@ -11,8 +11,8 @@ class CreationController extends AbstractController
 {
     public function addLearning(): string
     {
-        $LearningManager = new LearningManager();
-        $learnings = $LearningManager->selectAll('id', 'ASC');
+        $learningManager = new LearningManager();
+        $learnings = $learningManager->selectAll('id', 'ASC');
 
         /**
          * @TODO Verification
