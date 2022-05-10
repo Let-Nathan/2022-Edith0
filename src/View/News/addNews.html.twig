@@ -2,6 +2,7 @@
     {% block asidebarLeft %}
         {% include 'components/_asideBarLeft.html.twig'%}
     {% endblock %}
+
         {% block content %}
             <!-- Need to add upload files  -->
             <div class="d-flex flex-column align-items-center">
@@ -29,7 +30,7 @@
                         <label for="body" class=" h1 d-flex justify-content-center"></label>
                         <textarea class="form-control mb-5" id="body" placeholder="add your body content" name="body"> </textarea>
                     </div>
-                    
+
                     <input type="submit" name="submit" value="Submit">
                 </form>
             </div>

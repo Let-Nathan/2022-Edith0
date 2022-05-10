@@ -12,6 +12,7 @@ return [
     'login' => ['UserController', 'login'],
     'news' => ['NewsController', 'showNews'],
     'news/article' => ['ArticleController', 'showArticle', ['id']],
+    'news/add' => ['AddNewsController', 'AddNews'],
     'feed' => ['FeedController', 'showFeed'],
     'post/add' => ['PostController', 'addPost'],
     'post/delete' => ['PostController', 'deletePost', ['id']],
