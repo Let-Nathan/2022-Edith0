@@ -25,5 +25,4 @@ return [
     'feed/rss' => ['RssController', 'feed'],
     'learning/add' => ['Learning\CreationController', 'addLearning'],
     'learning/delete' => ['Learning\CreationController', 'deleteLearning', ['id']]
-
 ];
