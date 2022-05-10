@@ -4,7 +4,7 @@
     {% endblock %}
         {% block content %}
                    <!-- Need to add upload files  -->
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center mb-5 mt-5">
                 <form method="post" enctype="application/x-www-form-urlencoded">
                     <!-- Title form -->
                     <div class="form-group">
@@ -45,11 +45,11 @@
                     </div>
 
                     <!-- List select to add in the good container -->
-                    <div class="form-group">
+                    <div class="form-group d-flex gap-2">
                         <p class="alert text-danger">{{ errors.category }}</p>
-                        <input type="submit" name="submit" value="Create" class="btn-primary">
+                        <input type="submit" name="submit" value="Create" class="btn btn-primary">
                         <label for="contentId"></label>
-                        <select name='contentId' id="contentId">
+                        <select name='contentId' id="contentId" class="p-2 rounded">
                             <option value="">Categories for your eLearning</option>
                             {% for learning in learning %}
                             <option value="{{ learning.id }}">{{ learning.title }}</option>
@@ -57,7 +57,6 @@
                         </select>
 
                     </div>
-
             </form>
         </div>
      {% endblock %}
