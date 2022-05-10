@@ -1,5 +1,9 @@
 {% extends 'layout-3cols.html.twig' %}
 
+{% block asidebarLeft %}
+    {% include 'components/_asideBarLeft.html.twig'%}
+{% endblock %}
+
 {% block content %}
     <div class="head">
     <img class="newspaper rounded mt-2"  src="https://zupimages.net/up/22/17/wt6l.jpg">
@@ -27,6 +31,9 @@
                 <div class="d-flex ms-2">
                     <p>{{content['create_at']}}</p>
                     <a href="news/article?id={{ content.id }}" class="card-link ms-3">Read more</a>
+                </div>
+                <div>
+                   <!-- <button type="button" class="btn btn-light">Delete</button> -->
                 </div>
             </div>
         </div>
