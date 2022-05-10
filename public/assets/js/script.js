@@ -51,3 +51,11 @@ ctaLikeComments.forEach(el => {
             })
     });
 });
+
+const mediaUploadEl = document.querySelector('#media');
+mediaUploadEl.addEventListener('change', ev => {
+    fileNameEl = document.createElement('div');
+    fileNameEl.innerHTML = ev.target.value;
+
+    mediaUploadEl.closest('div').appendChild(fileNameEl);
+})
