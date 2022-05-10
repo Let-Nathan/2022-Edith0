@@ -36,8 +36,7 @@ class ContentsManager extends AbstractManager
         string $title,
         string $imgUrl,
         string $body,
-        int $learningId,
-
+        int $learningId
     ): int {
         $stmt = $this->pdo->prepare("UPDATE " . self::TABLE .
             " SET title= :title,

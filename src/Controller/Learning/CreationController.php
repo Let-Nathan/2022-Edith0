@@ -13,7 +13,7 @@ class CreationController extends AbstractController
         $learningManager = new LearningManager();
         $learnings = $learningManager->selectAll('id', 'ASC');
         $errors = [];
-        var_dump($learnings);
+
         /**
          * @TODO Verification
          */
@@ -24,15 +24,17 @@ class CreationController extends AbstractController
             $body = trim($_POST['body']);
             $header = trim($_POST['header']);
             $description = substr($body, 0, 50);
-            $imgBody = '';
-            $imgHeader = '';
+            $imgBody = trim($_POST['imgBody']);
+            $imgHeader = trim($_POST['imgHeader']);
             $imgContainer = '';
 
             /**
              * @TODO Bdd relational to stock images
              */
             foreach ($learnings as $value) {
-                $learningId === $value['id'] ?  $imgContainer = $value['img_url'] : $imgContainer = '' ;
+                if ($learningId === $value['id']) {
+                    $imgContainer = $value['img_url'];
+                }
             }
             $content = [$title, $imgContainer, $description, $learningId];
             $learning = [$title, $titleBody, $body, $imgHeader, $header, $imgBody];
@@ -44,7 +46,15 @@ class CreationController extends AbstractController
              * @CHEKING POST VALUES
              */
             $insertService = new LearningFormServices();
-            $errors = $insertService->errorsCheck($learningId, $title, $header, $titleBody, $body);
+            $errors = $insertService->errorsCheck(
+                $learningId,
+                $title,
+                $header,
+                $titleBody,
+                $body,
+                $imgHeader,
+                $imgBody
+            );
 
             /**
              * @EMPTY-ERRORS => insert

@@ -12,8 +12,10 @@
                             <p class="alert text-danger">{{ errors.title }}</p>
                         <label for="title" class=" h1 d-flex justify-content-center"> </label>
                         <textarea class="form-control mb-5" id="title" placeholder="Create your eLearning title" name="title" rows="1" style="width: 50rem;">{{ content.title }}</textarea>
-
-                    </div>
+                        {{ errors.imgHeader }}
+                        <label for="imgHeader" class=" h1 d-flex justify-content-center"> </label>
+                        <input class="form-control mb-5" id="imgHeader" placeholder="Input link to display header images" name="imgHeader" rows="1" style="width: 50rem;">
+                            </div>
 
                     <!-- Header description -->
                     <div class="form-group">
@@ -29,6 +31,9 @@
                         <p class="alert text-danger">{{ errors.titleBody }}</p>
                         <label for="title-body" class=" h1 d-flex justify-content-center"></label>
                         <textarea class="form-control mb-5" id="title-body" placeholder="" name="title-body" rows="1">{{ content.title_body }}</textarea>
+                        <p class="alert text-danger">{{ errors.imgBody }}</p>
+                        <label for="imgBody" class=" h1 d-flex justify-content-center"> </label>
+                        <input class="form-control mb-5" id="imgBody" placeholder="Input link to display main images" name="imgBody" rows="1" style="width: 50rem;">
                     </div>
 
                     <!-- Body content -->

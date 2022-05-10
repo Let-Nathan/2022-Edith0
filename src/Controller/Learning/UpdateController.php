@@ -25,28 +25,37 @@ class UpdateController extends AbstractController
             $body = trim($_POST['body']);
             $header = trim($_POST['header']);
             $description = substr($body, 0, 50);
-            $imgHeader = '';
-            $imgBody = '';
+            $imgHeader =  trim($_POST['imgHeader']);
+            $imgBody = trim($_POST['imgBody']);
             $imgContainer = '';
 
             /**
              * @TODO Add bdd relational to stock container images
-             */
-            foreach ($learning as $value) {
-                $categoryId === $value['id'] ?  $imgContainer = $value['img_url'] : $imgContainer = '' ;
-            }
+            */
+
             /**
              * @TODO POST images on add && update
              */
-            foreach ($page as $value) {
-                $imgHeader = $value['img_header'];
-                $imgBody = $value['img_body'];
-            }
             /**
              * @TODO CHECK FOR IMAGES
              */
             $insertService = new LearningFormServices();
-            $errors = $insertService->errorsCheck($categoryId, $title, $header, $titleBody, $body);
+            $errors = $insertService->errorsCheck(
+                $categoryId,
+                $title,
+                $header,
+                $titleBody,
+                $body,
+                $imgHeader,
+                $imgBody
+            );
+
+
+            foreach ($learning as $value) {
+                if ($categoryId === $value['id']) {
+                    $imgContainer = $value['img_url'];
+                }
+            }
 
             /**
              * @EMPTY-ERRORS => insert

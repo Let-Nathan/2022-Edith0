@@ -3,11 +3,11 @@
         {% include 'components/_asideBarLeft.html.twig'%}
     {% endblock %}
             {% block content %}
-                <div class="d-flex flex-column align-items-center">
+                <div class="d-flex flex-column align-items-center col-12 ">
                     <p class="h1 d-flex justify-content-center mb-5"> {{ eLearning.title }}</p>
                     <div class="groupe-card">
                         <div class="d-flex justify-content-center align-items-center flex-column">
-                            <img src="{{ eLearning.img_header }}" class="img-fluid mb-5" alt="{{ eLearning.title }}">
+                            <img src="{{ eLearning.img_header }}" class="img-fluid mb-5"  alt="{{ eLearning.title }}">
                             <div class="card-body col-11 border">
                                 <p> {{ eLearning.header }} </p>
                             </div>
