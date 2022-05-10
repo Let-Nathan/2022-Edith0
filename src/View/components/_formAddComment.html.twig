@@ -3,8 +3,8 @@
         <label for="body" class="form-label" hidden>Leave a comment</label>
         <textarea class="ed-textarea form-control" id="body" name='body' placeholder="leave a comment"></textarea>
         {# TODO: replace 5 with logged user #}
-        <input value="5" type="number" name="userId" hidden>
-        <input value="{{ post['id'] }}" type="number" name="postId" hidden>
+        <input value="5" type="number" name="userId" id="userId" hidden>
+        <input value="{{ post['id'] }}" type="number" name="postId" id="postId" hidden>
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>

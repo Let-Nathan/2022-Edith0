@@ -3,64 +3,74 @@
 namespace App\Controller\Learning;
 
 use App\Controller\AbstractController;
-use App\Model\Learning\ContentsManager;
 use App\Model\Learning\LearningManager;
-use App\Model\Learning\PageManager;
+use App\Services\LearningFormServices;
 
 class CreationController extends AbstractController
 {
     public function addLearning(): string
     {
-        $LearningManager = new LearningManager();
-        $learnings = $LearningManager->selectAll('id', 'ASC');
+
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+        }
+        $learningManager = new LearningManager();
+        $learnings = $learningManager->selectAll('id', 'ASC');
+        $errors = [];
 
         /**
          * @TODO Verification
          */
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $pageManager = new PageManager();
-            $contentsManager = new ContentsManager();
+            $learningId = intval($_POST['contentId']);
+            $title = trim($_POST['title']);
+            $titleBody = trim($_POST['title-body']);
+            $body = trim($_POST['body']);
+            $header = trim($_POST['header']);
+            $description = substr($body, 0, 50);
+            $imgBody = trim($_POST['imgBody']);
+            $imgHeader = trim($_POST['imgHeader']);
+            $imgContainer = '';
 
-        /**
-         * @POST For the pages content
-         */
-
-                //$_POST for learning pages contents & catégories
-                $learningId = intval($_POST['contentId']);
-                $title = $_POST['title'];
-                $titleBody = $_POST['title-body'];
-                $body = $_POST['body'];
-                $imgHeader = '';
-                $header = '';
-                $imgBody = '';
-                $imgContainer = '';
-                $description = substr($body, 0, 50);
-            //Set default parent img for learning container ('WIP')
-            foreach ($learnings as $values) {
-                if ($values['id'] === $learningId) {
-                    $imgContainer = $values['img_url'];
+            /**
+             * @TODO Bdd relational to stock images
+             */
+            foreach ($learnings as $value) {
+                if ($learningId === $value['id']) {
+                    $imgContainer = $value['img_url'];
                 }
             }
-                //Get the return of last insert id in Table, and insert into Content
-               $lastInsertId = $contentsManager->addContents(
-                   $title,
-                   $imgContainer,
-                   $description,
-                   $learningId
-               );
-                //Insert the pages content into pages bdd
-                $pageManager->addLearning(
-                    $lastInsertId,
-                    $title,
-                    $titleBody,
-                    $body,
-                    $imgHeader,
-                    $header,
-                    $imgBody
-                );
+            $content = [$title, $imgContainer, $description, $learningId];
+            $learning = [$title, $titleBody, $body, $imgHeader, $header, $imgBody];
 
+            /**
+             * @TODO insert link to add images & $_POST
+             */
+            /**
+             * @CHEKING POST VALUES
+             */
+            $insertService = new LearningFormServices();
+            $errors = $insertService->errorsCheck(
+                $learningId,
+                $title,
+                $header,
+                $titleBody,
+                $body,
+                $imgHeader,
+                $imgBody
+            );
+
+            /**
+             * @EMPTY-ERRORS => insert
+             */
+            if (!$errors) {
+                $insertService->insert($content, $learning);
                 header('Location: /learning');
+            }
         }
-        return $this->twig->render('Learning/add.html.twig', ['learning' => $learnings]);
+        return $this->twig->render('Learning/add.html.twig', [
+            'learning' => $learnings,
+            'errors' => $errors
+        ]);
     }
 }

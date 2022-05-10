@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0'>
+    <channel>
+
+        <title>Editho</title>
+        <link>https://www.editho.com</link>
+        <description>The social network for your company</description>
+        <language>en-EN</language>
+
+        {% for post in posts %}
+            <item>
+                <user>{{ post['user']['firstname'] ~ ' ' ~ post['user']['lastname'] ~ ' - ' ~ post['user']['position']}}</user>
+                <link>localhost/feed</link>
+                <body>{{ post['body'] }}</body>
+                <pubDate>{{ post['last_update_datetime'] }}</pubDate>
+                <comments>
+                    {% for comment in post['comments'] %}
+                        <user>{{ comment['user']['firstname'] ~ ' ' ~ comment['user']['lastname'] ~ ' - ' ~ comment['user']['position']}}</user>
+                        <body>{{ comment['body'] }}</body>
+                    {% endfor %}
+                </comments>
+            </item>
+        {% endfor %}
+
+    </channel>
+</rss>
