@@ -10,7 +10,7 @@
     </div>
     <div class=" d-flex justify-content-center mt-3">
 
-        <form class="btn btn-secondary btn-lg btn-block">
+        <form class="btn-news-add btn btn-secondary btn-lg btn-block">
             <a href="/news/add">
                 <input type="button" value="Ajouter un news">
             </a>
@@ -27,13 +27,14 @@
                         </div>
                 </div>
                     <p class="card-text mt-3">{{content['body']|slice(0, 250)}}</p>
-
                 <div class="d-flex ms-2">
                     <p>{{content['create_at']}}</p>
                     <a href="news/article?id={{ content.id }}" class="card-link ms-3">Read more</a>
                 </div>
                 <div>
-                   <!-- <button type="button" class="btn btn-light">Delete</button> -->
+                    <a href="news/delete?id={{ content.id }}" class="btn btn-primary d-flex justify-content-center align-items-center p-0 m-1" style="width: 8rem; height: 2rem">Delete</a>
+
+                    <!-- <button type="button" class="btn btn-light">Delete</button> -->
                 </div>
             </div>
         </div>

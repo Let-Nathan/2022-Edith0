@@ -82,6 +82,7 @@ class NewsController extends AbstractController
     public function deleteNews(int $id)
     {
         // TODO: delete all related documents and image from filesystem
+        $id = intval($_GET['id']);
         $newsManager = new NewsManager();
         $news = $newsManager->selectOneById($id);
 
@@ -89,6 +90,6 @@ class NewsController extends AbstractController
             $newsManager->delete($id);
         }
 
-        header('Location: /feed');
+        header('Location: /news');
     }
 }
