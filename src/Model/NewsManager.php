@@ -29,14 +29,14 @@ class NewsManager extends AbstractManager
         string $title,
         ?string $mediaUrl,
         ?string $body,
-    ): ?string {
+    ) {
 
-        $query = "INSERT INTO " . self::TABLE . " (title, media_url, body,)
-            VALUES (:title, :media_url, :body)";
+        $query = "INSERT INTO " . self::TABLE . " (title, media_url, body, user_id) VALUES (:title, :media_url, :body, :userId)";
 
         $sth = $this->pdo->prepare($query);
 
         $sth->execute([
+            'userId' => $_SESSION['user_id'],
             'title' => $title,
             'media_url' => $mediaUrl,
             'body' => $body,

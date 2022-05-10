@@ -56,12 +56,11 @@ class NewsController extends AbstractController
                 $errors[] = 'Too many characters in the body';
             }
 
-            // upload media
-
             $fileUploader = new FileUploader();
 
             $fileModel = new FileModel($_FILES['media']);
             $mediaUrl = null;
+
             if (file_exists($fileModel->getTmpName())) {
                 try {
                     $mediaUrl = $fileUploader->uploadMedia($fileModel);
@@ -72,7 +71,7 @@ class NewsController extends AbstractController
 
             if (empty($errors)) {
                 $addNewsManager = new NewsManager();
-                $addNewsManager->InsertNews($addNews['title'], $addNews['media_url'], $addNews['body']);
+                $addNewsManager->InsertNews($addNews['title'], $mediaUrl, $addNews['body']);
 
                 header('Location:/news');
             }
