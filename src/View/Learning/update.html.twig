@@ -12,10 +12,10 @@
                         <p class="alert text-danger">{{ errors.title }}</p>
                         <label for="title" class=" h1 d-flex justify-content-center"> </label>
                         <textarea class="form-control mb-5" id="title" placeholder="Create your eLearning title" name="title" rows="1" style="width: 50rem;">{{ content.title }}</textarea>
+                    <img src="{{ content.img_header }}" class="img-fluid mb-5" alt="{{ content.title }}">
                         {{ errors.imgHeader }}
                         <label for="imgHeader" class=" h1 d-flex justify-content-center"> </label>
-                        <input class="form-control mb-5" id="imgHeader" placeholder="Input link to display header images" name="imgHeader" rows="1" style="width: 50rem;">
-                    <img src="{{ content.img_header }}" class="img-fluid mb-5" alt="{{ content.title }}">
+                        <input type="url" class="form-control mb-5" id="imgHeader" placeholder="Changes the link of top picture or right click on the picture to get it !" name="imgHeader" rows="1" style="width: 50rem;">
                     </div>
 
                     <!-- Header description -->
@@ -27,16 +27,17 @@
                     </div>
 
                     <!-- Title body form -->
-                    <div class="form-group d-flex flex-column">
+                    <div class="form-group d-flex flex-column align-items-center">
                         <p class="h1 d-flex justify-content-center">{{ content.title_body}}</p>
                         <p class="alert text-danger">{{ errors.titleBody }}</p>
                         <label for="title-body" class=" h1 d-flex justify-content-center"></label>
                         <textarea class="form-control mb-5" id="title-body" placeholder="" name="title-body" rows="1">{{ content.title_body }}</textarea>
+                        <img src="{{ content.img_body }}" class="img-fluid mb-5 border" alt="{{ content.title }}">
                         {{ errors.imgBody }}
                         <label for="imgBody" class=" h1 d-flex justify-content-center"> </label>
-                        <input class="form-control mb-5" id="imgBody" placeholder="Input link to display header images" name="imgBody" rows="1" style="width: 50rem;">
+                        <input type="url" class="form-control mb-5" id="imgBody" placeholder="Changes the link of body picture or right click on the picture to get it !" name="imgBody" rows="1" style="width: 50rem;">
                     </div>
-                    <img src="{{ content.img_body }}" class="img-fluid mb-5 border" alt="{{ content.title }}">
+
 
                     <!-- Body content -->
                     <div class="form-group d-flex flex-column align-items-center">
