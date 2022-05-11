@@ -1,0 +1,45 @@
+{% extends 'layout-3cols.html.twig' %}
+    {% block asidebarLeft %}
+        {% include 'components/_asideBarLeft.html.twig'%}
+    {% endblock %}
+
+        {% block content %}
+            <div class="d-flex justify-content-center">
+                <h2> Add a new </h2>
+            </div>
+            <div class="d-flex justify-content-center mb-6">
+                <img src="https://www.villedefloing.com/wp-content/uploads/2015/05/news2.jpg" alt="image-news-add">
+            </div>
+            <!-- Need to add upload files  -->
+            <div class="d-flex flex-column align-items-center">
+                <form method="post" enctype="multipart/form-data">
+
+                    <!-- News title -->
+
+                    <div class="form-group">
+                        <p class="h5 d-flex justify-content-center mt-6"> Add your title </p>
+                        <label for="title" class=" h1 d-flex justify-content-center"> </label>
+                        <input type="text" class="form-control mb-5" id="title" placeholder="add your main title" name="title">
+                    </div>
+
+                    <!-- News Media -->
+
+                    <div class="ed-form-control m-3 p-2 ms-0 ps-0 rounded">
+                        <label for="media" class="d-flex align-items-center m-0"><ion-icon class='icon-m me-2' name="image-outline"></ion-icon>image</label>
+                        <input type="file" class="form-control" name="media[]" id="media" hidden>
+                    </div>
+
+                    <!-- News body -->
+
+                    <div class="form-group">
+                        <p class="h5">Add your news body</p>
+                        <label for="body" class=" h1 d-flex justify-content-center"></label>
+                        <textarea class="form-control mb-5" id="body" placeholder="add your body content" name="body"> </textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                     <input type="submit" name="submit" value="Enregistrer">
+                    </div>
+                </form>
+            </div>
+        {% endblock %}
