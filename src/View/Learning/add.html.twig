@@ -4,23 +4,28 @@
     {% endblock %}
         {% block content %}
                    <!-- Need to add upload files  -->
-            <div class="d-flex flex-column align-items-center mb-5 mt-5">
+            <div class="d-flex flex-column align-items-center mb-3 mt-5">
                 <form method="post" enctype="application/x-www-form-urlencoded">
+
                     <!-- Title form -->
-                    <div class="form-group">
+                    <div class="form-group d-flex flex-column align-items-center">
                         <p class="h1 d-flex justify-content-center">Title</p>
-                            <p class="alert text-danger">{{ errors.title }}</p>
-                        <label for="title" class=" h1 d-flex justify-content-center"> </label>
-                        <textarea class="form-control mb-5" id="title" placeholder="Create your eLearning title" name="title" rows="1" style="width: 50rem;">{{ content.title }}</textarea>
-                        {{ errors.imgHeader }}
-                        <label for="imgHeader" class=" h1 d-flex justify-content-center"> </label>
-                        <input class="form-control mb-5" id="imgHeader" placeholder="Input link to display header images" name="imgHeader" rows="1" style="width: 50rem;">
-                            </div>
+                        <p class="alert text-danger">{{ errors.title }}</p>
+                        <label for="title" class=" h1 d-flex justify-content-center "> </label>
+                        <input class="form-control mb-5" id="title" placeholder="Create your eLearning title" name="title" rows="1" style="width: 50rem;">{{ content.title }}
+                    </div>
 
                     <!-- Header description -->
                     <div class="form-group">
                         <p class="h1 d-flex justify-content-center">Introduction</p>
                         <p class="alert text-danger">{{ errors.header }}</p>
+                        <div class="card-body border mb-0">
+                            <p> <strong>The introduction will display like this : </strong>
+                                Introduction In a competitive world where businesses have to constantly innovate,
+                                companies have long understood the power of effective teamwork. Working in a team can be fun,
+                                but it is not always easy to make people work together and we all had our bad experiences.
+                                Let's see if we can learn more about how to work in teams. </p>
+                        </div>
                         <label for="header" class=" h1 d-flex justify-content-center"> </label>
                         <textarea class="form-control mb-5" id="header" placeholder="Create your eLearning description" name="header" rows="6">{{ content.header }}</textarea>
                     </div>
@@ -31,21 +36,39 @@
                         <p class="alert text-danger">{{ errors.titleBody }}</p>
                         <label for="title-body" class=" h1 d-flex justify-content-center"></label>
                         <textarea class="form-control mb-5" id="title-body" placeholder="" name="title-body" rows="1">{{ content.title_body }}</textarea>
-                        <p class="alert text-danger">{{ errors.imgBody }}</p>
-                        <label for="imgBody" class=" h1 d-flex justify-content-center"> </label>
-                        <input class="form-control mb-5" id="imgBody" placeholder="Input link to display main images" name="imgBody" rows="1" style="width: 50rem;">
                     </div>
 
                     <!-- Body content -->
                     <div class="form-group">
-                        <p class="h1 d-flex justify-content-center">Content</p>
+                        <p class="h1 d-flex justify-content-center">Content :</p>
                         <p class="alert text-danger">{{ errors.body }}</p>
+                        <div class="card-body border mb-0">
+                            <p> <strong>The text content will display like this : </strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Pellentesque placerat tempus viverra. Nam pretium placerat velit,
+                                sit amet laoreet libero laoreet id. Cras a blandit diam, vitae bibendum neque.
+                                Quisque ut est id tortor tincidunt mollis. Vivamus eleifend eu diam et placerat.
+                                Aliquam commodo quis erat non cursus. Donec sit amet tincidunt dolor. Vestibulum ante ipsum primis
+                                in faucibus orci luctus et ultrices posuere cubilia curae;
+                                Sed semper consequat finibus. Aliquam suscipit velit vel eros congue, sit amet ultrices lorem sodales. Nam id justo dui. Praesent dictum, ex eget cursus ornare,
+                                lacus magna ornare nunc, vitae hendrerit nulla augue sed nibh. Sed sollicitudin facilisis semper.
+                                Donec viverra tortor blandit efficitur laoreet. Pellentesque in consequat lectus. Mauris ut venenatis diam,
+                                semper placerat nulla. Aliquam vestibulum, lacus sed lacinia laoreet, felis lectus sollicitudin nisl, in ornare quam urna a
+                                felis
+                            </p>
+                        </div>
                         <label for="body" class=" h1 d-flex justify-content-center"></label>
                         <textarea class="form-control mb-5" id="body" placeholder="Create your body content" name="body" rows="12"> {{ content.body }}</textarea>
                     </div>
-
+                    <!-- Header and Body Images -->
+                    <p class="alert text-danger mb-0">{{ errors.imgBody }} {{ errors.imgHeader }}</p>
+                    <label for="imgHeader" class="h1 d-flex justify-content-center"> </label>
+                    <input class="form-control " id="imgHeader" placeholder="Add your link for top picture" name="imgHeader" rows="1" style="width: 50rem;">
+                    <label for="imgBody" class="h1 d-flex justify-content-center"> </label>
+                    <input class="form-control mb-5" id="imgBody" placeholder="Add your link for body picture" name="imgBody" rows="1" style="width: 50rem;">
                     <!-- List select to add in the good container -->
                     <div class="form-group d-flex gap-2">
+
                         <p class="alert text-danger">{{ errors.category }}</p>
                         <input type="submit" name="submit" value="Create" class="btn btn-primary">
                         <label for="contentId"></label>
